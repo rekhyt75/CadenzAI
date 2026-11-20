@@ -11,26 +11,26 @@ App FastAPI servita da Uvicorn su `127.0.0.1:<port>` (predefinita 8765), con lo 
 - **Ogni endpoint deve restituire JSON.** Poiché una route catch-all di file statici serve `index.html` per i percorsi sconosciuti, un endpoint cancellato per errore restituisce in silenzio HTML e la pagina resta bloccata su "Caricamento...". Dopo **ogni** modifica al backend esegui uno smoke test che chiami ogni endpoint e interpreti la risposta come JSON.
 - Modelli Pydantic per i body; restituisci `{ "ok": true }` per le mutazioni; per le richieste non valide invia il messaggio del server in `detail` (la UI lo mostra).
 
-## 2. Lo script `start.sh`
+## 2. Lo script `cadenzAI.sh`
 
-Comandi: `start | stop | restart | status | logs [N] | run`. Comportamento da riprodurre:
+Comandi: `start | stop | restart | status | logs [N] | run | ai start|stop|status`. Comportamento da riprodurre:
 
 - `start`: se è già in esecuzione dillo ed esci con 0; altrimenti rifiuta con garbo se **un altro programma** usa la porta (non toccarlo mai); avvia Uvicorn **completamente staccato** e attendi (≤ 20 s) che `GET /api/meta` risponda 200; scrivi il file PID `data/server[-<port>].pid`; stampa l'URL.
 - `stop`: trova il PID (file PID, altrimenti chi è in ascolto sulla porta) e verifica con `/proc/<pid>/cmdline` che sia **uvicorn `app:app` avviato proprio su questa porta** prima di inviare `SIGTERM`; passa a `SIGKILL` dopo 10 s; avvisa se è in corso un aggiornamento Garmin ("riprende al prossimo avvio"). Esci con 0 se non è in esecuzione.
 - `restart` = stop + start. `status`: PID, uptime, URL, codice HTTP, lo stato della sincronizzazione e il percorso del log; **codice di uscita 0 se è in esecuzione, 3 se non lo è**. `logs`: senza argomento → segui il log; con un numero → ultime N righe (convalidalo). `run`: in primo piano.
-- Con l'IA locale facoltativa (`10`), `start` avvia anche Ollama (solo loopback) se è installato e non è in esecuzione, e `stop` lo ferma solo se lo ha avviato lo script.
+- Con l'IA locale facoltativa (`10`), `start` avvia anche Ollama (solo loopback) se è installato e non è in esecuzione, e `stop` lo ferma solo se lo ha avviato lo script. `status` stampa una riga «modello locale» (non installato / spento / attivo con i modelli installati); `ai start|stop|status` gestisce solo il server del modello; `CADENZAI_AI=0` ne impedisce l'avvio.
 - Host/porta da variabili d'ambiente (`<APP>_HOST`, `<APP>_PORT`); il file PID è **per porta**.
 
 Lezioni (ognuna è costata un'esecuzione fallita nella build di riferimento):
 
 1. **Non usare mai `pkill -f '<pattern>'`** quando il pattern compare anche nella tua riga di comando: uccide la tua shell. Termina per PID.
 2. **Verifica che il PID sia tuo e su questa porta** prima di terminarlo: un file PID di un'altra porta una volta ha fatto uccidere a `stop` l'istanza sbagliata.
-3. **Stacca il processo correttamente.** Avvia con le redirezioni applicate alla subshell *prima* del fork e `exec setsid nohup uvicorn …`; altrimenti il figlio eredita lo stdout del chiamante e `./start.sh restart | tail` non termina mai (qualsiasi chiamante che attende la fine dell'output si blocca).
+3. **Stacca il processo correttamente.** Avvia con le redirezioni applicate alla subshell *prima* del fork e `exec setsid nohup uvicorn …`; altrimenti il figlio eredita lo stdout del chiamante e `./cadenzAI.sh restart | tail` non termina mai (qualsiasi chiamante che attende la fine dell'output si blocca).
 4. Gli avvisi di "completato" dei task in background significano solo che il *launcher* ha finito: controlla il log e il DB.
 
 ### 2.1 Windows
 
-Su Windows preferisci **WSL 2** (Ubuntu): tutto ciò che precede funziona senza modifiche al suo interno. Per una build Windows nativa, chiedi uno `start.ps1` (PowerShell) con gli stessi comandi, codici di uscita, file PID per porta e URL, sostituendo le parti valide solo su Linux:
+Su Windows preferisci **WSL 2** (Ubuntu): tutto ciò che precede funziona senza modifiche al suo interno. Per una build Windows nativa, chiedi uno `cadenzAI.ps1` (PowerShell) con gli stessi comandi, codici di uscita, file PID per porta e URL, sostituendo le parti valide solo su Linux:
 
 | Linux | Windows (PowerShell) |
 |---|---|
@@ -47,10 +47,10 @@ Lezioni per Windows: i percorsi dell'ambiente virtuale sono `.venv\Scripts\pytho
 ```bash
 python3 -m venv .venv && .venv/bin/pip install fastapi uvicorn httpx fitparse numpy scipy pydantic
 cd frontend && npm install && npm run build      # produces frontend/dist
-./start.sh start                                  # http://127.0.0.1:8765
+./cadenzAI.sh start                                  # http://127.0.0.1:8765
 ```
 
-Su Windows (PowerShell): `py -3.12 -m venv .venv; .venv\Scripts\pip install fastapi uvicorn httpx fitparse numpy scipy pydantic`, poi gli stessi comandi `npm` e `.\start.ps1 start`.
+Su Windows (PowerShell): `py -3.12 -m venv .venv; .venv\Scripts\pip install fastapi uvicorn httpx fitparse numpy scipy pydantic`, poi gli stessi comandi `npm` e `.\cadenzAI.ps1 start`.
 
 Ricompila il frontend dopo ogni modifica alla UI (`npm run build`); riavvia il server dopo le modifiche al backend.
 

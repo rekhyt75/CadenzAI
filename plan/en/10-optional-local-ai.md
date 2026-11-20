@@ -31,7 +31,7 @@ If the user declines, skip this whole file and do not show the button.
 - Download the official Linux archive of Ollama from its GitHub releases page (pin the version), into a **new empty folder**; list its contents before extracting (`tar -t`), extract into `~/.local/opt/ollama`, delete the archive. On macOS and Windows use the official installer instead and keep the same settings.
 - Store models under `~/.local/share/cadenzai-models` (`OLLAMA_MODELS`).
 - Start with `OLLAMA_HOST=127.0.0.1:11434 ollama serve`, then `ollama pull <model>`.
-- Integrate with `start.sh` (`07`): `start` launches Ollama detached **only if it is installed and not already running**, stores its PID in `data/ollama.pid`, and `stop` stops it **only if the script started it** (verify the process command line contains `ollama serve`).
+- Integrate with `cadenzAI.sh` (`07`): `start` launches Ollama detached **only if it is installed and not already running**, stores its PID in `data/ollama.pid`, and `stop` stops it **only if the script started it** (verify the process command line contains `ollama serve`).
 
 ## 5. Model choice and measured performance (reference machine: 16 threads, 31 GB RAM, no usable discrete GPU)
 
@@ -83,7 +83,7 @@ Maximum 140 words. Do not repeat the list of data.
 4. Percentages in the facts are percentages (the quadrant shares are stored as **seconds**: divide by their sum).
 5. A ride without heart rate yields "N/D" and the summary draws no conclusion from it (read three generated texts).
 6. A second press returns the cached text instantly; "Regenerate" produces a new one.
-7. `./start.sh stop` does not stop an Ollama that the user started by hand.
+7. `./cadenzAI.sh stop` does not stop an Ollama that the user started by hand.
 
 ## 10. Honest limits
 

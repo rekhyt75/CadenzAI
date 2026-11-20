@@ -63,7 +63,7 @@ CLAUDE.md  istruzioni iniziali che Claude Code legge da solo
 | `04-metrics-and-formulas` | ogni formula con parametri e controlli di validità |
 | `05-bikes-and-components` | parco bici, abbinamento automatico, usura e soglie |
 | `06-pages-and-ux` | menu, ogni pagina, regole di design e accessibilità |
-| `07-operations-and-quality` | server, `start.sh`, protocollo di test, lezioni apprese |
+| `07-operations-and-quality` | server, `cadenzAI.sh`, protocollo di test, lezioni apprese |
 | `08-roadmap-and-comparison` | confronto con GoldenCheetah, funzioni candidate, cosa non si fa |
 | `09-reference-data` | modello di configurazione, tabella dei percentili, colori, campi FIT |
 | `10-optional-local-ai` | riassunto IA locale **facoltativo** dell'uscita (chiesto prima, disattivato per impostazione predefinita) |
@@ -176,21 +176,22 @@ La prima importazione di uno storico lungo può richiedere tempo perché Garmin 
 ### 7 · Uso quotidiano
 
 ```bash
-./start.sh start      # http://127.0.0.1:8765
-./start.sh status     # attivo? da quanto? l'aggiornamento da Garmin è finito?
-./start.sh logs 50    # ultime righe del log (senza numero: lo segue)
-./start.sh restart    # dopo modifiche al codice
-./start.sh stop
+./cadenzAI.sh start      # http://127.0.0.1:8765
+./cadenzAI.sh status     # attivo? da quanto? l'aggiornamento da Garmin è finito?
+./cadenzAI.sh logs 50    # ultime righe del log (senza numero: lo segue)
+./cadenzAI.sh restart    # dopo modifiche al codice
+./cadenzAI.sh ai status  # server del modello IA locale facoltativo (parte con l'app se è installato)
+./cadenzAI.sh stop
 ```
 
-Su Windows nativo Claude Code costruisce un equivalente PowerShell, `start.ps1` (stessi comandi; vedi `plan/it/07-operations-and-quality.md` §2.1):
+Su Windows nativo Claude Code costruisce un equivalente PowerShell, `cadenzAI.ps1` (stessi comandi; vedi `plan/it/07-operations-and-quality.md` §2.1):
 
 ```powershell
-.\start.ps1 start      # http://127.0.0.1:8765  (la prima volta: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned)
-.\start.ps1 status
-.\start.ps1 logs 50
-.\start.ps1 restart
-.\start.ps1 stop
+.\cadenzAI.ps1 start      # http://127.0.0.1:8765  (la prima volta: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned)
+.\cadenzAI.ps1 status
+.\cadenzAI.ps1 logs 50
+.\cadenzAI.ps1 restart
+.\cadenzAI.ps1 stop
 ```
 
 Apri la pagina: l'app chiede a Garmin **solo il nuovo** e ti mostra cosa manca nelle uscite nuove (niente potenza, niente FC, una bici da confermare).
@@ -215,7 +216,7 @@ Fai un fork del repository e modifica i file in `plan/`: cambia le pagine, le so
 | `HTTP 401` dopo mesi | la chiave è scaduta: creane una nuova (passo 1) e sostituisci il file |
 | `HTTP 404` sugli endpoint delle bici | normale: l'API non espone le bici; usa l'export e l'abbinamento automatico |
 | Una pagina resta su «Caricamento…» | un endpoint dell'API ha risposto HTML invece di JSON (una rotta è stata rimossa): esegui il test di tutti gli endpoint |
-| `start.sh` dice che la porta è occupata | la usa un altro programma; scegline un'altra con `<APP>_PORT=8800 ./start.sh start` (PowerShell: `$env:<APP>_PORT=8800; .\start.ps1 start`) |
+| `cadenzAI.sh` dice che la porta è occupata | la usa un altro programma; scegline un'altra con `<APP>_PORT=8800 ./cadenzAI.sh start` (PowerShell: `$env:<APP>_PORT=8800; .\cadenzAI.ps1 start`) |
 | Windows: «l'esecuzione di script è disabilitata» | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, poi riesegui |
 | Una pagina di prodotto è bloccata («protezione anti-bot») | non aggirarla: aprila nel tuo browser e incolla la scheda tecnica, o usa un'altra fonte pubblica |
 

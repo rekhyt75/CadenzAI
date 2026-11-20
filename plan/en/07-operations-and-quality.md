@@ -11,26 +11,26 @@ FastAPI app served by Uvicorn on `127.0.0.1:<port>` (default 8765), the same pro
 - **Every endpoint must return JSON.** Because a static-file catch-all route serves `index.html` for unknown paths, an endpoint that was deleted by mistake silently returns HTML and the page hangs on "Loading…". After **every** backend edit run a smoke test that calls every endpoint and parses the response as JSON.
 - Pydantic models for bodies; return `{ "ok": true }` for mutations; send the server's message in `detail` for 400s (the UI shows it).
 
-## 2. The `start.sh` script
+## 2. The `cadenzAI.sh` script
 
-Commands: `start | stop | restart | status | logs [N] | run`. Behaviour to reproduce:
+Commands: `start | stop | restart | status | logs [N] | run | ai start|stop|status`. Behaviour to reproduce:
 
 - `start`: if already running say so and exit 0; otherwise refuse politely if **another program** uses the port (never touch it); launch Uvicorn **fully detached** and wait (≤ 20 s) for `GET /api/meta` = 200; write the PID file `data/server[-<port>].pid`; print the URL.
 - `stop`: find the PID (PID file, else the listener of the port) and verify with `/proc/<pid>/cmdline` that it is **uvicorn `app:app` started on this very port** before sending `SIGTERM`; escalate to `SIGKILL` after 10 s; warn if a Garmin update is running ("it resumes on the next start"). Exit 0 if not running.
 - `restart` = stop + start. `status`: PID, uptime, URL, HTTP code, the sync state and the log path; **exit code 0 if running, 3 if not**. `logs`: no argument → follow the log; a number → last N lines (validate it). `run`: foreground.
-- With the optional local AI (`10`), `start` also launches Ollama (loopback only) if installed and not running, and `stop` stops it only if the script started it.
+- With the optional local AI (`10`), `start` also launches Ollama (loopback only) if installed and not running, and `stop` stops it only if the script started it. `status` prints a "local model" line (not installed / off / on with the installed models); `ai start|stop|status` manages only the model server; `CADENZAI_AI=0` prevents it from ever being started.
 - Host/port from environment variables (`<APP>_HOST`, `<APP>_PORT`); the PID file is **per port**.
 
 Lessons (each one cost a failed run in the reference build):
 
 1. **Never `pkill -f '<pattern>'`** when the pattern also appears in your own command line: it kills your shell. Kill by PID.
 2. **Verify that the PID is yours and on this port** before killing: a PID file from another port once made `stop` kill the wrong instance.
-3. **Detach properly.** Launch with the redirections applied to the subshell *before* forking and `exec setsid nohup uvicorn …`; otherwise the child inherits the caller's stdout and `./start.sh restart | tail` never terminates (any caller that waits for end-of-output hangs).
+3. **Detach properly.** Launch with the redirections applied to the subshell *before* forking and `exec setsid nohup uvicorn …`; otherwise the child inherits the caller's stdout and `./cadenzAI.sh restart | tail` never terminates (any caller that waits for end-of-output hangs).
 4. Background-task "completed" notices only mean the *launcher* finished: check the log and the DB.
 
 ### 2.1 Windows
 
-On Windows prefer **WSL 2** (Ubuntu): everything above works unchanged inside it. For a native Windows build, ask for a `start.ps1` (PowerShell) with the same commands, exit codes, per-port PID file and URL, replacing the Linux-only parts:
+On Windows prefer **WSL 2** (Ubuntu): everything above works unchanged inside it. For a native Windows build, ask for a `cadenzAI.ps1` (PowerShell) with the same commands, exit codes, per-port PID file and URL, replacing the Linux-only parts:
 
 | Linux | Windows (PowerShell) |
 |---|---|
@@ -47,10 +47,10 @@ Windows lessons: the paths of the virtual environment are `.venv\Scripts\python.
 ```bash
 python3 -m venv .venv && .venv/bin/pip install fastapi uvicorn httpx fitparse numpy scipy pydantic
 cd frontend && npm install && npm run build      # produces frontend/dist
-./start.sh start                                  # http://127.0.0.1:8765
+./cadenzAI.sh start                                  # http://127.0.0.1:8765
 ```
 
-On Windows (PowerShell): `py -3.12 -m venv .venv; .venv\Scripts\pip install fastapi uvicorn httpx fitparse numpy scipy pydantic`, then the same `npm` commands and `.\start.ps1 start`.
+On Windows (PowerShell): `py -3.12 -m venv .venv; .venv\Scripts\pip install fastapi uvicorn httpx fitparse numpy scipy pydantic`, then the same `npm` commands and `.\cadenzAI.ps1 start`.
 
 Rebuild the frontend after every UI change (`npm run build`); restart the server after backend changes.
 

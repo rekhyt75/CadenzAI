@@ -94,7 +94,7 @@ app/
   frontend/           index.html package.json vite.config.js src/{App,lib,pages1,pages2,pages3,radar,ride}.jsx styles.css
   data/               <app>.db  fit/  server.log
   config/profile.yaml
-  start.sh            start | stop | restart | status | logs | run
+  cadenzAI.sh            start | stop | restart | status | logs | run | ai
 ```
 
 Architectural principles: one local process; a thin Garmin client; an idempotent, incremental sync; derived metrics stored per ride; analytics endpoints that take a `period` parameter; a frontend that only renders what the API returns.
@@ -117,7 +117,7 @@ Each phase ends with acceptance checks run on real data. Details are in the file
 | 9 | Pauses and reasons; Calendar (`06`) | pause bands appear on load/recovery charts and in the calendar |
 | 10 | Ride detail, cadence/torque quadrants, aerobic decoupling (`04`, `06`) | route on an OpenStreetMap map with offline fallback; synced charts |
 | 11 | Rider profile radar (7 axes, two views) (`04`, `06`) | each axis states its metric, sample size and assumptions |
-| 12 | Operations: `start.sh`, incremental-sync test, full-page scan, notes (`07`) | delete one ride from the DB, restart, it is re-downloaded and identical |
+| 12 | Operations: `cadenzAI.sh`, incremental-sync test, full-page scan, notes (`07`) | delete one ride from the DB, restart, it is re-downloaded and identical |
 | 13 | **Optional**, only if the user said yes: local-AI ride summary (`10`) | with the model server stopped the button shows a readable error; the facts sent contain no GPS or ride name |
 
 ## 7. Definition of done

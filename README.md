@@ -63,7 +63,7 @@ CLAUDE.md  bootstrap instructions that Claude Code reads automatically
 | `04-metrics-and-formulas` | every formula with parameters and validation checks |
 | `05-bikes-and-components` | bike fleet, automatic bike matching, wear and thresholds |
 | `06-pages-and-ux` | menu, every page, design and accessibility rules |
-| `07-operations-and-quality` | server, `start.sh`, testing protocol, lessons learned |
+| `07-operations-and-quality` | server, `cadenzAI.sh`, testing protocol, lessons learned |
 | `08-roadmap-and-comparison` | comparison with GoldenCheetah, candidate features, non-goals |
 | `09-reference-data` | config template, percentile table, colours, FIT fields |
 | `10-optional-local-ai` | **optional** local-AI ride summary (asked first, off by default) |
@@ -176,21 +176,22 @@ The first import of a long history can take a while because Garmin rate-limits r
 ### 7 · Everyday use
 
 ```bash
-./start.sh start      # http://127.0.0.1:8765
-./start.sh status     # running? since when? is the Garmin update done?
-./start.sh logs 50    # last log lines (no number = follow)
-./start.sh restart    # after code changes
-./start.sh stop
+./cadenzAI.sh start      # http://127.0.0.1:8765
+./cadenzAI.sh status     # running? since when? is the Garmin update done?
+./cadenzAI.sh logs 50    # last log lines (no number = follow)
+./cadenzAI.sh restart    # after code changes
+./cadenzAI.sh ai status  # optional local AI model server (started together with the app if installed)
+./cadenzAI.sh stop
 ```
 
-On native Windows Claude Code builds a PowerShell equivalent, `start.ps1` (same commands; see `plan/en/07-operations-and-quality.md` §2.1):
+On native Windows Claude Code builds a PowerShell equivalent, `cadenzAI.ps1` (same commands; see `plan/en/07-operations-and-quality.md` §2.1):
 
 ```powershell
-.\start.ps1 start      # http://127.0.0.1:8765  (first time: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned)
-.\start.ps1 status
-.\start.ps1 logs 50
-.\start.ps1 restart
-.\start.ps1 stop
+.\cadenzAI.ps1 start      # http://127.0.0.1:8765  (first time: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned)
+.\cadenzAI.ps1 status
+.\cadenzAI.ps1 logs 50
+.\cadenzAI.ps1 restart
+.\cadenzAI.ps1 stop
 ```
 
 Open the page: the app asks Garmin only for **what is new**, and shows what is missing in the new rides (no power, no heart rate, a bike to confirm).
@@ -215,7 +216,7 @@ Fork the repository and edit the files in `plan/`: change the pages, the thresho
 | `HTTP 401` after months | the key expired: create a new one (step 1) and replace the file |
 | `HTTP 404` on gear endpoints | normal: the API does not expose bikes; use the export and the automatic matching |
 | A page stays on "Loading…" | an API endpoint returned HTML instead of JSON (a route was removed); run the endpoint smoke test |
-| `start.sh` says the port is busy | another program uses it; pick another with `<APP>_PORT=8800 ./start.sh start` (PowerShell: `$env:<APP>_PORT=8800; .\start.ps1 start`) |
+| `cadenzAI.sh` says the port is busy | another program uses it; pick another with `<APP>_PORT=8800 ./cadenzAI.sh start` (PowerShell: `$env:<APP>_PORT=8800; .\cadenzAI.ps1 start`) |
 | Windows: "running scripts is disabled" | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, then re-run |
 | A product page is blocked ("bot protection") | do not bypass it: open it in your browser and paste the spec, or use another public source |
 

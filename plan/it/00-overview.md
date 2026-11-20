@@ -94,7 +94,7 @@ app/
   frontend/           index.html package.json vite.config.js src/{App,lib,pages1,pages2,pages3,radar,ride}.jsx styles.css
   data/               <app>.db  fit/  server.log
   config/profile.yaml
-  start.sh            start | stop | restart | status | logs | run
+  cadenzAI.sh            start | stop | restart | status | logs | run | ai
 ```
 
 Principi architetturali: un solo processo locale; un client Garmin sottile; una sincronizzazione idempotente e incrementale; metriche derivate salvate per ogni uscita; endpoint di analisi che accettano un parametro `period`; un frontend che mostra solo ciò che restituisce l'API.
@@ -117,7 +117,7 @@ Ogni fase termina con controlli di accettazione eseguiti su dati reali. I dettag
 | 9 | Pause e motivi; Calendario (`06`) | le fasce di pausa compaiono nei grafici di carico/recupero e nel calendario |
 | 10 | Dettaglio uscita, quadranti cadenza/coppia, disaccoppiamento aerobico (`04`, `06`) | percorso su mappa OpenStreetMap con ripiego offline; grafici sincronizzati |
 | 11 | Radar del profilo del ciclista (7 assi, due viste) (`04`, `06`) | ogni asse indica la sua metrica, la dimensione del campione e le ipotesi |
-| 12 | Operatività: `start.sh`, test della sincronizzazione incrementale, scansione completa delle pagine, note (`07`) | elimina un'uscita dal DB, riavvia: viene scaricata di nuovo ed è identica |
+| 12 | Operatività: `cadenzAI.sh`, test della sincronizzazione incrementale, scansione completa delle pagine, note (`07`) | elimina un'uscita dal DB, riavvia: viene scaricata di nuovo ed è identica |
 | 13 | **Facoltativa**, solo se l'utente ha detto sì: riassunto IA locale dell'uscita (`10`) | con il server del modello fermo il pulsante mostra un errore leggibile; i dati inviati non contengono GPS né il nome dell'uscita |
 
 ## 7. Definizione di completato

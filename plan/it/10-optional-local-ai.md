@@ -31,7 +31,7 @@ Se l'utente rifiuta, salta tutto questo file e non mostrare il pulsante.
 - Scarica l'archivio Linux ufficiale di Ollama dalla pagina delle release su GitHub (fissa la versione), in una **cartella nuova e vuota**; elenca il contenuto prima di estrarlo (`tar -t`), estrai in `~/.local/opt/ollama`, cancella l'archivio. Su macOS e Windows usa invece l'installatore ufficiale e mantieni le stesse impostazioni.
 - Conserva i modelli in `~/.local/share/cadenzai-models` (`OLLAMA_MODELS`).
 - Avvia con `OLLAMA_HOST=127.0.0.1:11434 ollama serve`, poi `ollama pull <model>`.
-- Integra con `start.sh` (`07`): `start` avvia Ollama staccato **solo se è installato e non è già in esecuzione**, ne salva il PID in `data/ollama.pid`, e `stop` lo ferma **solo se lo ha avviato lo script** (verifica che la riga di comando del processo contenga `ollama serve`).
+- Integra con `cadenzAI.sh` (`07`): `start` avvia Ollama staccato **solo se è installato e non è già in esecuzione**, ne salva il PID in `data/ollama.pid`, e `stop` lo ferma **solo se lo ha avviato lo script** (verifica che la riga di comando del processo contenga `ollama serve`).
 
 ## 5. Scelta del modello e prestazioni misurate (macchina di riferimento: 16 thread, 31 GB di RAM, nessuna GPU dedicata utilizzabile)
 
@@ -83,7 +83,7 @@ Maximum 140 words. Do not repeat the list of data.
 4. Le percentuali nei dati sono percentuali (le quote dei quadranti sono salvate in **secondi**: dividi per la loro somma).
 5. Un'uscita senza frequenza cardiaca produce «N/D» e il riassunto non ne trae alcuna conclusione (leggi tre testi generati).
 6. Una seconda pressione restituisce subito il testo in cache; «Rigenera» ne produce uno nuovo.
-7. `./start.sh stop` non ferma un Ollama che l'utente ha avviato a mano.
+7. `./cadenzAI.sh stop` non ferma un Ollama che l'utente ha avviato a mano.
 
 ## 10. Limiti onesti
 
