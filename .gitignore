@@ -1,0 +1,16 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Never commit anything generated from personal data
+data/
+raw_data/
+*.db
+*.fit
+*.key
+.env
+.venv/
+node_modules/

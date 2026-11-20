@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 680" width="760" height="680" role="img" aria-label="Seven-axis rider profile radar, synthetic data" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#131d2e"/></linearGradient><radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#3987e5" stop-opacity=".55"/><stop offset="1" stop-color="#3987e5" stop-opacity="0"/></radialGradient><radialGradient id="glowO" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e8693a" stop-opacity=".45"/><stop offset="1" stop-color="#e8693a" stop-opacity="0"/></radialGradient><linearGradient id="areaB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3987e5" stop-opacity=".45"/><stop offset="1" stop-color="#3987e5" stop-opacity="0"/></linearGradient><linearGradient id="word" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cfe0ff"/></linearGradient><linearGradient id="ai" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb36b"/><stop offset="1" stop-color="#e8693a"/></linearGradient></defs>
+<rect width="760" height="680" rx="18" fill="url(#bg)"/><circle cx="380" cy="360" r="260" fill="url(#glowB)" opacity=".5"/>
+<text x="40" y="52" font-size="26" fill="#f2f4f8" font-weight="800" text-anchor="start" >Rider profile</text><text x="40" y="78" font-size="15" fill="#c4cddb" font-weight="400" text-anchor="start" >Seven qualities, measured from your own rides</text>
+<polygon points="380.0,308.8 420.1,328.0 430.0,371.4 402.2,406.2 357.8,406.2 330.0,371.4 339.9,328.0" fill="none" stroke="#24334a" stroke-width="1"/>
+<polygon points="380.0,257.5 460.1,296.1 479.9,382.8 424.5,452.3 335.5,452.3 280.1,382.8 299.9,296.1" fill="none" stroke="#24334a" stroke-width="1"/>
+<polygon points="380.0,206.2 500.2,264.1 529.9,394.2 446.7,498.5 313.3,498.5 230.1,394.2 259.8,264.1" fill="none" stroke="#24334a" stroke-width="1"/>
+<polygon points="380.0,155.0 540.3,232.2 579.9,405.6 468.9,544.7 291.1,544.7 180.1,405.6 219.7,232.2" fill="none" stroke="#33445f" stroke-width="1.6"/>
+<line x1="380" y1="360" x2="380.0" y2="155.0" stroke="#24334a"/>
+<text x="380.0" y="130.0" font-size="16" fill="#f2f4f8" font-weight="600" text-anchor="middle" >VO₂max</text>
+<line x1="380" y1="360" x2="540.3" y2="232.2" stroke="#24334a"/>
+<text x="566.8577243098591" y="218.47989656319763" font-size="16" fill="#f2f4f8" font-weight="600" text-anchor="middle" >Threshold</text>
+<line x1="380" y1="360" x2="579.9" y2="405.6" stroke="#24334a"/>
+<text x="613.0077710114558" y="417.2924194797339" font-size="16" fill="#f2f4f8" font-weight="600" text-anchor="middle" >Sprint</text>
+<line x1="380" y1="360" x2="468.9" y2="544.7" stroke="#24334a"/>
+<text x="483.6982136490964" y="576.7276839570685" font-size="16" fill="#f2f4f8" font-weight="600" text-anchor="middle" >Endurance</text>
+<line x1="380" y1="360" x2="291.1" y2="544.7" stroke="#24334a"/>
+<text x="276.3017863509036" y="576.7276839570685" font-size="16" fill="#f2f4f8" font-weight="600" text-anchor="middle" >Climbing</text>
+<line x1="380" y1="360" x2="180.1" y2="405.6" stroke="#24334a"/>
+<text x="146.99222898854416" y="417.2924194797339" font-size="16" fill="#f2f4f8" font-weight="600" text-anchor="middle" >Flat pace</text>
+<line x1="380" y1="360" x2="219.7" y2="232.2" stroke="#24334a"/>
+<text x="193.14227569014085" y="218.47989656319766" font-size="16" fill="#f2f4f8" font-weight="600" text-anchor="middle" >Recovery</text>
+<polygon points="380.0,216.5 479.4,280.8 489.9,385.1 446.7,498.5 321.3,481.9 300.1,378.2 255.0,260.3" fill="#1fb386" fill-opacity=".16" stroke="#1fb386" stroke-width="3"/>
+<polygon points="380.0,232.9 468.2,289.7 519.9,391.9 449.4,504.1 328.4,467.1 280.1,382.8 248.6,255.2" fill="#3987e5" fill-opacity=".22" stroke="#3987e5" stroke-width="3.2"/>
+<circle cx="380.0" cy="232.9" r="6" fill="#3987e5" stroke="#131d2e" stroke-width="2.5"/>
+<circle cx="468.2" cy="289.7" r="6" fill="#3987e5" stroke="#131d2e" stroke-width="2.5"/>
+<circle cx="519.9" cy="391.9" r="6" fill="#3987e5" stroke="#131d2e" stroke-width="2.5"/>
+<circle cx="449.4" cy="504.1" r="6" fill="#3987e5" stroke="#131d2e" stroke-width="2.5"/>
+<circle cx="328.4" cy="467.1" r="6" fill="#3987e5" stroke="#131d2e" stroke-width="2.5"/>
+<circle cx="280.1" cy="382.8" r="6" fill="#3987e5" stroke="#131d2e" stroke-width="2.5"/>
+<circle cx="248.6" cy="255.2" r="6" fill="#3987e5" stroke="#131d2e" stroke-width="2.5"/>
+<rect x="40" y="622" width="22" height="4" fill="#3987e5"/><text x="70" y="628" font-size="15" fill="#c4cddb" font-weight="400" text-anchor="start" >You</text><rect x="130" y="622" width="22" height="4" fill="#1fb386"/><text x="160" y="628" font-size="15" fill="#c4cddb" font-weight="400" text-anchor="start" >Closest rider type (recomputed on every load)</text>
+<text x="736" y="666" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="end" >Illustrative mockup · synthetic data</text>
+</svg>

@@ -1,0 +1,95 @@
+# 06 · Pages, navigation and design rules
+
+## 1. Navigation
+
+A left sidebar with **four collapsible areas** (state remembered; the area of the current page is always visible), hash routing (`#page` or `#page/param`, e.g. `#ride/<id>`; a `hashchange` listener must update the view), and a top bar.
+
+| Area | Entry | Uses the period filter |
+|---|---|---|
+| **General statistics** | Physiology · Rider profile · Cardiovascular efficiency · Power analytics · Training load · Cadence and torque · Climbs · Evolution · Correlations · Recovery | yes |
+| | Coach · Data quality | no (fixed windows) |
+| **Calendar** | Calendar · Rides to match · Pauses and reasons | no |
+| **Single ride** | Ride detail · Browse activities | no / yes |
+| **Workshop** | Bike fleet · Components and wear | fleet yes / components no |
+
+**Top bar:** on pages that use the period, the filter row `[ All time | Last 2 years | Last year | Last 6 months | Last 3 months | Last month ]` plus "from <date>"; on the others, a breadcrumb "Area › Page". On the right: sync status text + "Update" button, and a **sun/moon theme switch**. **Open on "Last 6 months".** "All time" means everything stored (no age cap, see `01` §5). The filter row scopes **every number, chart and table on the page**; while reloading, keep the previous render dimmed (no skeleton, no layout jump).
+
+Sidebar badges: components over 80 %, rides to match, pauses without a reason. "Ride detail" in the menu reopens the last ride viewed. Every ride title in every table and in the calendar links to `#ride/<id>`.
+
+## 2. Page specifications
+
+### 2.1 Physiology
+KPI tiles (km, climbing, hours, mean NP, total TSS, TSS/week, mean IF); an "identity card" with the all-time bests at 5 s, 1 min, 5 min, 20 min, 60 min in W and W/kg and a short observation/hypothesis; weekly hours (toggle km), weekly TSS, ATL/CTL ratio; **peaks in the period (bars) against the all-time best (line with markers)**; EF of rides > 90 min over time; time per power zone and per heart-rate zone (show the 0 W hours separately); table of the **last 15 rides** (date, linked title, km, climbing, mean power, NP, mean HR, EF, TSS — Garmin's, with own value in brackets only if > 2 % apart — and bike with a red "uncertain" pill).
+
+### 2.2 Rider profile
+Two cards: the 7-axis radar (view switch *Current form* / *Comparison with types*, a "?" modal with sources and limits, a type menu defaulting to **"closest to you"**) and a table "the seven qualities, one by one" (definition, metric, value, score, sample size) plus the clickable similarity ranking. Open on **Comparison with types**. See `04` §10.
+
+### 2.3 Cardiovascular efficiency
+EF per ride (> 90 min), monthly median EF, heart-rate zone time, **aerobic decoupling** chart (dots per ride, zero and median lines) with a sortable table; observation/hypothesis text.
+
+### 2.4 Power analytics
+Power-duration curves (two years chosen by the user + the selected period, log time axis, W or W/kg switch), FTP per quarter (estimate vs Garmin), critical power/W′ table (all history and last 12 months), best power per year table.
+
+### 2.5 Training load
+PMC (CTL/ATL/TSB, zero line, pause bands), weekly TSS, CTL at week end; caption about the 6-week warm-up.
+
+### 2.6 Cadence and torque
+Torque-vs-cadence heat-map for the period (SVG, hover reads the cell: cadence range, torque range, minutes, % of time), quadrant shares table, stacked bars of quadrant share per month, observation/hypothesis/limit text.
+
+### 2.7 Climbs
+Scatter (length vs gain, colour = bike, hit area ≥ 24 px) and a sortable table (date, linked ride, bike, km, gain, grade, duration, power, HR, VAM). Caption: algorithm estimate.
+
+### 2.8 Evolution
+Two date ranges (defaults per `04` §11), a checkbox "exclude injury/illness pauses and the 14 days after", a table per metric (medians, % change, p, corrected p, plain-language verdict) and the two power curves.
+
+### 2.9 Correlations
+A matrix heat-map (diverging blue/grey/red), **a reading guide to the right of the matrix** (rows = columns = the same indicators; colour meaning; strength convention |ρ| < 0.1 negligible, 0.1–0.3 weak, 0.3–0.5 moderate, ≥ 0.5 strong; diagonal; empty cells; p vs ρ; not causation; two examples computed from the data; the hovered cell's values), a toggle to exclude injury/illness days, and a collapsible sorted list **without an inner scrolling area**.
+
+### 2.10 Recovery
+HRV (night and weekly average), resting HR (+7-day mean), sleep score (+7-day mean), Body Battery (daily max/min), with pause bands. Missing days are empty, never filled.
+
+### 2.11 Coach and Data quality
+See `04` §13–14.
+
+### 2.12 Calendar
+Month grid (Monday first) with navigation (previous/next/today) and a month summary (rides, km, hours, TSS). Each ride is a coloured chip (colour = bike) showing km · hours and TSS (or "no power"), linking to its detail. Pause days are hatched, with "Pause: <reason>" on the first day. A **week-total column** (km, hours, TSS). Legend of bike colours. Hide the week column on narrow screens.
+
+### 2.13 Ride detail
+Header with previous/next buttons and a ride selector; title, date/time, type, bike pill (+ uncertain note); ten tiles (distance & climbing, time & moving time, average speed, mean power & NP, IF · TSS & ride FTP, VI, mean/max HR, EF, cadence, work & temperature).
+
+- **Synchronised charts** (shared cursor via `syncId`): altitude (area), power (with an FTP reference line), heart rate, cadence, speed — **one axis per chart** — with a Time/Distance x-axis switch; each point is the mean of N seconds (state N). Skip the HR chart and print a note when the ride has no HR.
+- **Route**: an SVG polyline from ≤ 600 GPS points (equirectangular projection scaled by cos(latitude)), start/end markers, a scale bar, **no external map tiles**.
+- Torque-vs-cadence plot with the ride's quadrant shares and median cadence/torque.
+- Aerobic decoupling card (or the reason it is unavailable); pedal-dynamics card (L/R balance, torque effectiveness, smoothness, time standing).
+- Time in power and HR zones; best efforts of the ride (5 s … 60 min) with their **rank among all rides** and the all-time best; detected climbs; laps table (km, time, speed, power, NP, max, HR, cadence, ascent, descent); bike selector with "Confirm".
+
+### 2.14 Browse activities
+Search box and sortable columns (same columns as the last-15 table), inline bike selector, red border on uncertain rows.
+
+### 2.15 Rides to match, Pauses, Bike fleet, Components
+See `05` and `04` §12. The Pauses page lists the automatic pauses (dates, days, last ride → next ride, a reason selector, a note, Save) plus a form to add a shorter manual pause, and explains exactly what the reason does and does not change.
+
+## 3. Design system and chart rules
+
+- **One axis per chart.** Never a dual-axis chart: two measures → two charts, small multiples or normalised.
+- **Colour is a job:** categorical (identity, fixed order, never cycled; a filter must not repaint surviving series), sequential (one hue light→dark, for ordered magnitudes such as zones), diverging (two hues + neutral grey midpoint), status (reserved; always with icon + label). Text never wears a series colour: use ink tokens; a coloured mark beside the text carries identity.
+- **Marks:** bars ≤ 24 px with a 4 px rounded data end and square baseline; lines 2 px; markers ≥ 8 px with a 2 px surface-colour ring; areas at ~10–14 % opacity; hairline solid gridlines; a 2 px surface-coloured gap between stacked segments (no outlines).
+- **Legends:** always for ≥ 2 series; none for one. Direct labels sparingly, never on every point.
+- **Tooltips:** hover **and** keyboard focus; one tooltip listing every series at the cursor, value first (bold), series name second, line-shaped key; labels inserted as text (never as HTML); hit areas ≥ 24 px for dots.
+- **Every chart has a one-sentence caption and a "Table" view toggle** (the same data as a sortable table).
+- **Disable chart entry animations** (they slow 700-point lines and make screenshots/tests unreliable).
+- **Light/dark:** define all colours as CSS variables, with the dark set both under `prefers-color-scheme` and under an explicit `data-theme` attribute; the switch stores the choice. Sequential ramps for zones differ per mode (in dark mode higher intensity = lighter).
+- **Accessibility:** buttons are real `<button>`s with `aria-expanded`/`aria-pressed`/`aria-sort`; modals use `role="dialog"`, `aria-modal`, focus the dialog on open, close on Esc/outside click/✕ and restore focus; icons have text alternatives; tables have real headers; do not rely on colour alone.
+- **Modals instead of long inline blocks** for explanations ("?"), add/edit forms and glossaries. **No inner scrollbars** inside cards when the page already scrolls (they fight the page scroll); use inner scrolling only for genuinely long tables with sticky headers.
+- **Cards that hold SVG/charts must grow with their content**: a fixed height clipped a 9×9 matrix once.
+- **Empty states** always say why and what to do ("No rides to match: all rides have a confirmed bike…").
+
+## 4. Frontend engineering rules (pitfalls met in the reference build)
+
+- React hooks must run in the same order on every render: put all `useState` before any early `return`.
+- In JSX text, escape `<` (write `&lt;`); a bare `<30°` breaks the build.
+- Do not define components inside other components if they hold state.
+- `Recharts`: category x-axis reference areas need x values that exist in the data (snap to the nearest day); `syncId` shares the cursor across stacked charts; hide inner x-axis labels except the last chart.
+- Round-trip every edit with a **full-page scan** (open every page for at least two periods, assert no console error, no `NaN`/`undefined`/`Infinity` in the text, no "Loading" stuck). A page that silently shows "Loading…" means the endpoint returned HTML (see `07`).
+- When a user-facing label changes, search the source for the old text, the docstrings and the project notes.
+- Persist small UI preferences in `localStorage` (theme, closed menu groups, accordion state, table sort, last ride).
