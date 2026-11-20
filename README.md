@@ -1,2 +1,2 @@
 # CadenzAI
-Copilot plan to build a dashboard for MTB analysis integrated with Garmin API
+Claude Code plan to build a dashboard for MTB analysis integrated with Garmin API
