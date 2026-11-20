@@ -67,7 +67,7 @@ Griglia mensile (si parte dal lunedì) con navigazione (precedente/successivo/og
 Casella di ricerca e colonne ordinabili (le stesse colonne della tabella delle ultime 15), selettore della bici in linea, bordo rosso sulle righe incerte.
 
 ### 2.15 Uscite da abbinare, Pause, Parco Bici, Componenti
-Vedi `05` e `04` §12. La pagina Pause elenca le pause automatiche (date, giorni, ultima uscita → prossima uscita, un selettore del motivo, una nota, Salva) più un modulo per aggiungere una pausa manuale più breve, e spiega esattamente che cosa il motivo cambia e che cosa non cambia.
+Vedi `05` e `04` §12. Ogni scheda bici mostra anche le quattro voci di valore di `05` §5 (listino, costo totale, valore con upgrade, rivendita stimata come intervallo), e la pagina del parco bici rilegge le bici a ogni apertura. La pagina Pause elenca le pause automatiche (date, giorni, ultima uscita → prossima uscita, un selettore del motivo, una nota, Salva) più un modulo per aggiungere una pausa manuale più breve, e spiega esattamente che cosa il motivo cambia e che cosa non cambia.
 
 ## 3. Sistema di design e regole dei grafici
 

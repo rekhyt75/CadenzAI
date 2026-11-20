@@ -27,8 +27,8 @@ Un unico file SQLite (`data/<app>.db`, i valori predefiniti di `PRAGMA` vanno be
 | `wellness_daily` | `day` | `resting_hr, min_hr, max_hr, steps, moderate_min, vigorous_min, stress_avg, bb_high, bb_low, bb_start, bb_sleepstart, respiration_hi/lo, kcal_active, source` (`export` o `api`) |
 | `sleep` | `day` | secondi per fase, `score`, respirazione, `sleep_stress`, `awake_count`, `feedback` |
 | `hrv` | `day` | `last_night_avg, weekly_avg, high5min, status, balanced_low, balanced_upper` |
-| `bikes` | `id` | `name` (univoco), `kind` (`mtb`, `gravel`, `strada`/strada, `rulli`/indoor, `altro`), `status` (`attiva`/`in_vendita`/`venduta`), `bought_on, sold_on, price, notes, color_slot` (1–8, **fisso per ogni bici per sempre**) |
-| `components` | `id` | `bike, kind, label, model, source, installed_on, removed_on, price, vendor, threshold_km, threshold_h, threshold_elev, threshold_days, notes` |
+| `bikes` | `id` | `name` (univoco), `kind` (`mtb`, `gravel`, `strada`/strada, `rulli`/indoor, `altro`), `status` (`attiva`/`in_vendita`/`venduta`), `bought_on, sold_on, price, list_price, sold_price, notes, color_slot` (1–8, **fisso per ogni bici per sempre**) |
+| `components` | `id` | `bike, kind, label, model, source, installed_on, removed_on, price, vendor, threshold_km, threshold_h, threshold_elev, threshold_days, notes, is_upgrade, upgrade_value` |
 | `pauses` | `start` | `end, reason, note, manual` (si salvano solo le annotazioni dell'utente; le pause automatiche sono calcolate) |
 | `meta` | `key` | chiave/valore libero |
 

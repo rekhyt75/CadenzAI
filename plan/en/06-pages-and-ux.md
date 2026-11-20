@@ -67,7 +67,7 @@ Month grid (Monday first) with navigation (previous/next/today) and a month summ
 Search box and sortable columns (same columns as the last-15 table), inline bike selector, red border on uncertain rows.
 
 ### 2.15 Rides to match, Pauses, Bike fleet, Components
-See `05` and `04` §12. The Pauses page lists the automatic pauses (dates, days, last ride → next ride, a reason selector, a note, Save) plus a form to add a shorter manual pause, and explains exactly what the reason does and does not change.
+See `05` and `04` §12. Each bike card also shows the four value figures of `05` §5 (list price, total cost, value with upgrades, estimated resale as a range), and the fleet page reloads the bikes every time it opens. The Pauses page lists the automatic pauses (dates, days, last ride → next ride, a reason selector, a note, Save) plus a form to add a shorter manual pause, and explains exactly what the reason does and does not change.
 
 ## 3. Design system and chart rules
 

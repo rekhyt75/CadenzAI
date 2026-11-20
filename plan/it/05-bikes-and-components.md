@@ -2,7 +2,7 @@
 
 ## 1. Parco Bici
 
-Una tabella `bikes` che l'utente modifica dall'interfaccia (non scrivere mai le bici nel codice). Campi: `name` (univoco), `kind` (`mtb`, `gravel`, `road`, `indoor`, `other`), `status` (`active`, `for sale`, `sold`), `bought_on`, `sold_on` (opzionale), `price`, `notes`, `color_slot`.
+Una tabella `bikes` che l'utente modifica dall'interfaccia (non scrivere mai le bici nel codice). Campi: `name` (univoco), `kind` (`mtb`, `gravel`, `road`, `indoor`, `other`), `status` (`active`, `for sale`, `sold`), `bought_on`, `sold_on` (opzionale), `price` (acquisto), `list_price`, `sold_price`, `notes`, `color_slot`.
 
 - **Il colore è un'identità:** a ogni bici viene assegnato uno slot di colore categorico (1–8) alla creazione e lo **mantiene per sempre**; aggiungere o vendere una bici non deve mai ricolorare le altre. Usa l'ordine categorico validato (vedi `09`).
 - **Aggiungi / modifica / elimina:** un pulsante "+ Aggiungi bici" (Officina → Parco Bici e Componenti) apre una finestra modale. Una bici con uscite o componenti non può essere eliminata (il server risponde 400 con un messaggio chiaro): l'utente la segna invece come **venduta**. Rinominare una bici aggiorna le sue uscite e i suoi componenti.
@@ -84,5 +84,30 @@ Un componente è in "attenzione" al **≥ 80 %** e "oltre" al **≥ 100 %** del 
 - Una **sezione a fisarmonica per bici** (stato ricordato), con il nome della bici, un **pulsante "+" a destra del nome** che apre una finestra modale *Aggiungi componente* (tipo dall'elenco dei modelli, modello, data di installazione, prezzo, venditore, soglie, note), una pillola di stato e un pulsante "Modifica bici".
 - Ogni tabella è **ordinabile per colonna**; l'**ordinamento predefinito è dal più usurato** (massimo decrescente dei due indicatori; i componenti senza valore per ultimi; quelli rimossi sempre in fondo; la scelta è ricordata, con un pulsante "ripristina").
 - Una **finestra modale di aiuto "?"** (non un blocco in cima alla pagina) spiega i due indicatori, i fattori, le ipotesi (massa, Crr, CdA) e un breve glossario (revisione dei foderi, revisione del manicotto ad aria, revisione completa).
-- Una **finestra modale "Modifica"** per componente (modello, data di installazione, prezzo, venditore, soglie, note, segna come rimosso, elimina con conferma).
+- Una **finestra modale "Modifica"** per componente (modello, data di installazione, prezzo, venditore, casella «è un upgrade» e valore aggiunto (`is_upgrade`, `upgrade_value`), soglie, note, segna come rimosso, elimina con conferma).
 - L'aggiornamento avviene automaticamente: l'usura è **calcolata al momento della richiesta** dalle uscite della bici dall'installazione, quindi una nuova uscita (o un'assegnazione della bici corretta) si riflette subito. **Test:** rimuovi un'uscita → i numeri calano; risincronizza → tornano esattamente come prima.
+
+## 5. Valore della bici: quattro voci distinte
+
+Ogni scheda bici nella pagina del parco bici mostra quattro voci (un pulsante **«?»** le spiega). Se mancano dati compare **N/D** con ciò che manca, mai un numero inventato.
+
+| Voce | Definizione |
+|---|---|
+| Prezzo di listino | il prezzo a nuovo del modello base (`list_price`, inserito dall'utente) |
+| Costo totale | prezzo di acquisto **più tutto ciò che hai speso sui componenti** (consumi, servizi, upgrade). Cresce sempre: è quanto è costata la bici nel tempo |
+| Valore a nuovo con upgrade | listino più il valore aggiunto dagli **upgrade** montati e non rimossi. I consumi (pastiglie, copertoni, catena) **non** lo aumentano: nessuno vende una bici senza pastiglie |
+| Rivendita stimata | listino × la quota di valore trattenuta all'età della bici, più gli upgrade, mostrata come **intervallo min–max** (il numero grande è il centro). Una bici venduta mostra il vero `sold_price` se inserito |
+
+Un componente è un upgrade solo se l'utente spunta **«È un upgrade»** (`is_upgrade`); il suo `upgrade_value` facoltativo (vuoto = il suo prezzo) è il valore che aggiunge a nuovo.
+
+**Modello di svalutazione: usane uno con fonte e dì da dove viene.** Fonte verificata: buycycle, «Quanto posso vendere la mia bici?» (`https://buycycle.com/blog/it/post/quanto-posso-vendere-la-mia-bici/`). Dà il valore trattenuto sul listino per fascia d'età e la regola «20–40 % perso nel primo anno, poi 10–15 % l'anno»:
+
+| Età | Trattenuto |
+|---|---|
+| meno di 1 anno | 70–80 % |
+| 1–2 anni | 60–70 % |
+| 3–4 anni | 45–60 % |
+| 5–6 anni | 35–50 % |
+| 7 anni o più | 25–40 % |
+
+Dichiara cosa è un'ipotesi **tua** e non della fonte: ogni fascia vale al centro del suo intervallo di età con una retta tra i punti; oltre 8 anni −12 % l'anno con un minimo del 15 %. La fonte **non** distingue MTB, gravel e strada e non dà **alcuna percentuale per gli upgrade**: un recupero come il 20–40 % del valore dell'upgrade è un'ipotesi non verificata, quindi etichettalo così nell'interfaccia, oppure chiedi all'utente. Non usare come dati cifre senza fonte prese dalla risposta di un assistente: apri la pagina e controlla. Ignora chilometri, condizioni, taglia e mercato locale, e dillo. Il vero listino dovrebbe essere lo street price al momento della vendita.

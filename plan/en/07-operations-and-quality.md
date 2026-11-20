@@ -81,7 +81,7 @@ Keep a short file (for Claude Code: its memory directory, or `NOTES.md`) with th
 | Thresholds | do not publish a wear threshold without a source; unsupported 50 h caused a false alarm |
 | DB | tables created by an older version need `ALTER … ADD COLUMN` migrations; never delete by age |
 | Backend | a deleted endpoint returns the SPA's HTML → frontend "Loading…" forever: smoke-test all endpoints; do not name a module like a stdlib module |
-| Frontend | hooks before early returns; escape `<` in JSX text; no fixed-height cards around content of unknown size; no inner scrollbars; synced charts via `syncId` |
+| Frontend | a modal's focus effect must not depend on an inline `onClose` (it steals the focus on every keystroke: keep it in a ref); lists cached in a context must be reloaded when a page that depends on other edits opens; hooks before early returns; escape `<` in JSX text; no fixed-height cards around content of unknown size; no inner scrollbars; synced charts via `syncId` |
 | Ops | no `pkill -f`; verify PID ownership/port; detach fully; read logs, not launcher exit codes |
 | Collaboration | the user may be using the app while you test: use a separate browser window, never confirm a destructive dialog you did not open, and restore any state you changed during tests (e.g. delete test components) |
 | Honesty | say when a figure is a proxy, when a check could not be run, and when your first answer was wrong |
