@@ -71,8 +71,9 @@ Collect these in one short round (use the defaults in the last column if the use
 | 10 | Pause threshold (days without rides to count as a pause) | 10 |
 | 11 | Port and host of the local server | `127.0.0.1:8765` |
 | 12 | Colour theme | follow the system, with a sun/moon switch |
+| 13 | **Optional** local-AI ride summary (`10`): explain it and ask; default no | no |
 
-State clearly to the user: the route map loads **OpenStreetMap tiles** from the internet (OSM sees the area being viewed, never the ride data; the app falls back to an offline drawing); the Garmin Personal API has **no bike/gear endpoint**; the app contains **no AI model** (the "Coach" is rule-based) unless they add one.
+State clearly to the user: the route map loads **OpenStreetMap tiles** from the internet (OSM sees the area being viewed, never the ride data; the app falls back to an offline drawing); the Garmin Personal API has **no bike/gear endpoint**; the app contains **no AI model** (the "Coach" is rule-based) unless the user accepts the optional local summary of `10`, which runs on their own computer.
 
 ## 5. Architecture and repository layout
 
@@ -117,6 +118,7 @@ Each phase ends with acceptance checks run on real data. Details are in the file
 | 10 | Ride detail, cadence/torque quadrants, aerobic decoupling (`04`, `06`) | route on an OpenStreetMap map with offline fallback; synced charts |
 | 11 | Rider profile radar (7 axes, two views) (`04`, `06`) | each axis states its metric, sample size and assumptions |
 | 12 | Operations: `start.sh`, incremental-sync test, full-page scan, notes (`07`) | delete one ride from the DB, restart, it is re-downloaded and identical |
+| 13 | **Optional**, only if the user said yes: local-AI ride summary (`10`) | with the model server stopped the button shows a readable error; the facts sent contain no GPS or ride name |
 
 ## 7. Definition of done
 

@@ -71,8 +71,9 @@ Raccoglile in un unico breve giro (usa i valori predefiniti dell'ultima colonna 
 | 10 | Soglia di pausa (giorni senza uscite per contare una pausa) | 10 |
 | 11 | Porta e host del server locale | `127.0.0.1:8765` |
 | 12 | Tema colore | segui il sistema, con un interruttore sole/luna |
+| 13 | Riassunto IA locale **facoltativo** (`10`): spiegalo e chiedi; predefinito no | no |
 
-Dì chiaramente all'utente: la mappa del percorso carica le **tessere di OpenStreetMap** da internet (OSM vede l'area che si sta guardando, mai i dati dell'uscita; l'app ripiega su un disegno offline); la Personal API di Garmin **non ha endpoint per bici/attrezzatura**; l'app **non contiene alcun modello di IA** (il "Coach" è basato su regole) a meno che l'utente non ne aggiunga uno.
+Dì chiaramente all'utente: la mappa del percorso carica le **tessere di OpenStreetMap** da internet (OSM vede l'area che si sta guardando, mai i dati dell'uscita; l'app ripiega su un disegno offline); la Personal API di Garmin **non ha endpoint per bici/attrezzatura**; l'app **non contiene alcun modello di IA** (il "Coach" è basato su regole) a meno che l'utente accetti il riassunto locale facoltativo di `10`, che gira sul suo computer.
 
 ## 5. Architettura e struttura del repository
 
@@ -117,6 +118,7 @@ Ogni fase termina con controlli di accettazione eseguiti su dati reali. I dettag
 | 10 | Dettaglio uscita, quadranti cadenza/coppia, disaccoppiamento aerobico (`04`, `06`) | percorso su mappa OpenStreetMap con ripiego offline; grafici sincronizzati |
 | 11 | Radar del profilo del ciclista (7 assi, due viste) (`04`, `06`) | ogni asse indica la sua metrica, la dimensione del campione e le ipotesi |
 | 12 | Operatività: `start.sh`, test della sincronizzazione incrementale, scansione completa delle pagine, note (`07`) | elimina un'uscita dal DB, riavvia: viene scaricata di nuovo ed è identica |
+| 13 | **Facoltativa**, solo se l'utente ha detto sì: riassunto IA locale dell'uscita (`10`) | con il server del modello fermo il pulsante mostra un errore leggibile; i dati inviati non contengono GPS né il nome dell'uscita |
 
 ## 7. Definizione di completato
 

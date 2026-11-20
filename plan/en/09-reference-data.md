@@ -28,6 +28,10 @@ assumptions:            # shown in the UI; edit to your setup
   air_density: 1.2
   torque_ref_cadence_rpm: 80
 bikes: []               # optional: [{name, kind, status, bought_on}]
+ai_summary:             # OPTIONAL local-AI ride summary (see 10); off unless the user says yes
+  enabled: false
+  model: qwen2.5:7b
+  url: http://127.0.0.1:11434   # must be a loopback address
 ```
 
 ## 2. Power percentile reference (men, W/kg)
@@ -87,4 +91,4 @@ Only the **first three** categorical slots are guaranteed distinguishable in eve
 
 ## 6. Dependencies (pin exact versions in your lock files)
 
-Backend: `fastapi, uvicorn, httpx, fitparse, numpy, scipy, pydantic`. Frontend: `react, react-dom, recharts (2.x), vite, @vitejs/plugin-react`. Optional for verification: a browser-automation tool (Chrome DevTools MCP or Playwright).
+Backend: `fastapi, uvicorn, httpx, fitparse, numpy, scipy, pydantic`. Frontend: `react, react-dom, recharts (2.x), vite, @vitejs/plugin-react`. Optional for verification: a browser-automation tool (Chrome DevTools MCP or Playwright). Frontend map: `leaflet` (1.9). Optional local AI (`10`): the Ollama program and one model (reference: `qwen2.5:7b`), not Python packages.

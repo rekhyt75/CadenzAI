@@ -18,6 +18,7 @@ Comandi: `start | stop | restart | status | logs [N] | run`. Comportamento da ri
 - `start`: se è già in esecuzione dillo ed esci con 0; altrimenti rifiuta con garbo se **un altro programma** usa la porta (non toccarlo mai); avvia Uvicorn **completamente staccato** e attendi (≤ 20 s) che `GET /api/meta` risponda 200; scrivi il file PID `data/server[-<port>].pid`; stampa l'URL.
 - `stop`: trova il PID (file PID, altrimenti chi è in ascolto sulla porta) e verifica con `/proc/<pid>/cmdline` che sia **uvicorn `app:app` avviato proprio su questa porta** prima di inviare `SIGTERM`; passa a `SIGKILL` dopo 10 s; avvisa se è in corso un aggiornamento Garmin ("riprende al prossimo avvio"). Esci con 0 se non è in esecuzione.
 - `restart` = stop + start. `status`: PID, uptime, URL, codice HTTP, lo stato della sincronizzazione e il percorso del log; **codice di uscita 0 se è in esecuzione, 3 se non lo è**. `logs`: senza argomento → segui il log; con un numero → ultime N righe (convalidalo). `run`: in primo piano.
+- Con l'IA locale facoltativa (`10`), `start` avvia anche Ollama (solo loopback) se è installato e non è in esecuzione, e `stop` lo ferma solo se lo ha avviato lo script.
 - Host/porta da variabili d'ambiente (`<APP>_HOST`, `<APP>_PORT`); il file PID è **per porta**.
 
 Lezioni (ognuna è costata un'esecuzione fallita nella build di riferimento):

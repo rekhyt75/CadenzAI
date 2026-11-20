@@ -18,6 +18,9 @@
 
 ## Perché un plan e non un'app?
 
+> ### 🔒 Privacy first
+> **I tuoi dati restano sul tuo PC.** Molti servizi online di ciclismo caricano le tue uscite, la frequenza cardiaca, il sonno e i percorsi sui propri server, dove vengono conservati, analizzati e spesso condivisi o monetizzati. CadenzAI fa l'opposto: il database e i tuoi file FIT originali stanno **solo sul tuo computer**, la dashboard gira **solo sulla tua macchina** (`127.0.0.1`) e non viene caricato nulla da nessuna parte. Le uniche connessioni sono quelle che puoi vedere e disattivare: **Garmin** (per scaricare *i tuoi* dati con *la tua* chiave) e le **tessere della mappa** (OpenStreetMap vede quale area guardi, mai i dati delle tue uscite; la vista offline è a un clic). Nessun account, nessun tracciamento, nessuna pubblicità.
+
 Ognuno ha bici, sensori e curiosità diversi. Un plan lo puoi **leggere, modificare e rieseguire**: togli una pagina, cambi una soglia, traduci l'interfaccia, aggiungi una tua metrica, e Claude Code ricostruisce l'app di conseguenza. Il plan racconta anche *gli errori già fatti* (campi sbagliati, trabocchetti sulle unità, un filtro troppo aggressivo…) così la tua versione non li ripete.
 
 ## Cosa fa l'app finita
@@ -27,12 +30,13 @@ Ognuno ha bici, sensori e curiosità diversi. Un plan lo puoi **leggere, modific
 - **Radar del profilo del ciclista** con sette qualità (VO₂max, soglia, sprint, resistenza, salita, passo in pianura, recupero) e confronto con i tipi di ciclista.
 - **Dettaglio uscita:** grafici sincronizzati, percorso su mappa OpenStreetMap colorabile per velocità, pendenza, potenza, frequenza cardiaca… (con ripiego offline), giri, zone, migliori sforzi, mappa coppia-cadenza, disaccoppiamento aerobico.
 - **Parco bici e usura dei componenti:** soglie *e* un indice d'usura che tiene conto del percorso (i freni si consumano in discesa, la catena col lavoro in pedalata), avvisi all'80% e al 100%, bici abbinate alle uscite in automatico.
+- **Riassunto IA facoltativo di un'uscita, 100 % locale:** un pulsante a forma di robottino scrive un breve riassunto con un modello linguistico che gira sul tuo computer (Ollama su `127.0.0.1`). È **disattivato a meno che tu dica di sì**; vedi `plan/it/10-optional-local-ai.md`.
 - **Onesta per progetto:** non inventa mai un valore mancante, etichetta ogni stima, separa osservazione, ipotesi e raccomandazione.
 - **Privata per progetto:** tutto resta sul tuo computer. Escono solo le chiamate a Garmin.
 
 <p align="center">
-  <img src="docs/images/radar.svg" alt="Radar illustrativo a sette assi del profilo del ciclista (dati sintetici)" width="46%"/>
-  <img src="docs/images/ride-detail.svg" alt="Pagina illustrativa del dettaglio uscita (dati sintetici)" width="52%"/>
+  <img src="docs/images/radar.svg" alt="Radar illustrativo a sette assi del profilo del ciclista (dati sintetici)" width="31%"/>
+  <img src="docs/images/ride-detail.svg" alt="Pagina illustrativa del dettaglio uscita (dati sintetici)" width="64%"/>
 </p>
 
 ## Come si incastra tutto
@@ -44,8 +48,8 @@ Stack della versione di riferimento: Python 3.12 · FastAPI · SQLite · `fitpar
 ## Cosa c'è in questo repository
 
 ```text
-plan/en/   il plan in inglese (00 … 09)
-plan/it/   il plan in italiano (00 … 09)
+plan/en/   il plan in inglese (00 … 10)
+plan/it/   il plan in italiano (00 … 10)
 docs/images/   illustrazioni usate in questo README (dati sintetici)
 CLAUDE.md  istruzioni iniziali che Claude Code legge da solo
 ```
@@ -62,6 +66,7 @@ CLAUDE.md  istruzioni iniziali che Claude Code legge da solo
 | `07-operations-and-quality` | server, `start.sh`, protocollo di test, lezioni apprese |
 | `08-roadmap-and-comparison` | confronto con GoldenCheetah, funzioni candidate, cosa non si fa |
 | `09-reference-data` | modello di configurazione, tabella dei percentili, colori, campi FIT |
+| `10-optional-local-ai` | riassunto IA locale **facoltativo** dell'uscita (chiesto prima, disattivato per impostazione predefinita) |
 
 I file hanno **gli stessi nomi in inglese e in italiano**, così i rimandi (per esempio «vedi `05`») valgono in entrambe le lingue.
 
@@ -163,7 +168,7 @@ Poi di' a Claude, per esempio:
 ### 6 · Cosa farà Claude
 
 1. Rivedrà il plan, elencherà le contraddizioni e ti farà un breve giro di domande (lingua, peso, frequenza cardiaca massima, bici, come accedere a Garmin, periodo predefinito…).
-2. Costruirà in **fasi da 0 a 12** (ambiente → accesso a Garmin → modello dei dati → metriche → API → struttura del frontend → pagine → bici e usura → benessere → calendario e pause → dettaglio uscita → radar → operazioni), eseguendo alla fine di ognuna **controlli di accettazione sui tuoi dati**.
+2. Costruirà in **fasi da 0 a 12** (più la fase 13 facoltativa solo se la chiedi) (ambiente → accesso a Garmin → modello dei dati → metriche → API → struttura del frontend → pagine → bici e usura → benessere → calendario e pause → dettaglio uscita → radar → operazioni), eseguendo alla fine di ognuna **controlli di accettazione sui tuoi dati**.
 3. Ti dirà con onestà cosa ha verificato, cosa non ha potuto verificare e cosa è fallito.
 
 La prima importazione di uno storico lungo può richiedere tempo perché Garmin limita le richieste; l'importatore è **riprendibile**.
@@ -216,7 +221,7 @@ Fai un fork del repository e modifica i file in `plan/`: cambia le pagine, le so
 
 ## Limiti onesti
 
-- L'app finita **non contiene modelli di intelligenza artificiale**: il «Coach» è a regole. Il nome è un richiamo al modo in cui viene costruita.
+- L'app finita **non contiene per impostazione predefinita alcun modello di intelligenza artificiale**: il «Coach» è a regole. L'unica IA è il riassunto locale **facoltativo** dell'uscita (`plan/it/10-optional-local-ai.md`): un modello piccolo che può sbagliare, etichettato con chiarezza, con i dati in ingresso a un clic. Il nome è un richiamo al modo in cui viene costruita l'app.
 - Soglie, indici d'usura, salite, FTP e potenza critica, punteggi del radar e forme dei tipi di ciclista sono **stime o ipotesi**, etichettate come tali. I migliori sforzi in uscita non sono test.
 - Il riferimento dei percentili è una tabella generica di popolazione (non corretta per età o disciplina).
 - Garmin può cambiare la sua API in qualsiasi momento. Il plan elenca cosa ricontrollare.

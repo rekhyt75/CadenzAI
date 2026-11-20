@@ -18,6 +18,9 @@
 
 ## Why a plan and not an app?
 
+> ### 🔒 Privacy first
+> **Your data stays on your PC.** Most online cycling services upload your rides, heart rate, sleep and routes to their own servers, where they are stored, analysed and often shared or monetised. CadenzAI does the opposite: the database and your original FIT files live **only on your computer**, the dashboard runs **only on your machine** (`127.0.0.1`), and nothing is uploaded anywhere. The only connections are the ones you can see and switch off: **Garmin** (to fetch *your own* data with *your own* key) and the **map tiles** (OpenStreetMap sees which area you look at, never your ride data; an offline view is one click away). No accounts, no tracking, no ads.
+
 Everyone rides different bikes, owns different sensors and wants different statistics. A plan is something you can **read, edit and re-run**: remove a page, change a threshold, translate the interface, add your own metric — and Claude Code rebuilds the app accordingly. The plan also records the *mistakes already made* (wrong fields, unit traps, a filter that was too aggressive…) so that your build does not repeat them.
 
 ## What the finished app does
@@ -27,12 +30,13 @@ Everyone rides different bikes, owns different sensors and wants different stati
 - **Rider profile radar** with seven qualities (VO₂max, threshold, sprint, endurance, climbing, flat pace, recovery) and a comparison with rider types.
 - **Ride detail:** synchronised charts, route on an OpenStreetMap map you can colour by speed, gradient, power, heart rate… (with an offline fallback), laps, zones, best efforts, torque-vs-cadence map, aerobic decoupling.
 - **Bike fleet and component wear:** thresholds *and* a route-aware wear index (brakes wear on descents, chains on pedalling work), alerts at 80 % and 100 %, bikes matched to rides automatically.
+- **Optional AI summary of a ride, 100 % local:** a robot button writes a short summary with a language model that runs on your own computer (Ollama on `127.0.0.1`). It is **off unless you say yes**; see `plan/en/10-optional-local-ai.md`.
 - **Honest by design:** it never invents a missing value, labels every estimate, separates observation, hypothesis and recommendation.
 - **Private by design:** everything stays on your computer. Only calls to Garmin leave it.
 
 <p align="center">
-  <img src="docs/images/radar.svg" alt="Illustrative seven-axis rider profile radar (synthetic data)" width="46%"/>
-  <img src="docs/images/ride-detail.svg" alt="Illustrative ride detail page (synthetic data)" width="52%"/>
+  <img src="docs/images/radar.svg" alt="Illustrative seven-axis rider profile radar (synthetic data)" width="31%"/>
+  <img src="docs/images/ride-detail.svg" alt="Illustrative ride detail page (synthetic data)" width="64%"/>
 </p>
 
 ## How it fits together
@@ -44,8 +48,8 @@ Stack of the reference build: Python 3.12 · FastAPI · SQLite · `fitparse` · 
 ## What's in this repository
 
 ```text
-plan/en/   the plan in English (00 … 09)
-plan/it/   il plan in italiano (00 … 09)
+plan/en/   the plan in English (00 … 10)
+plan/it/   il plan in italiano (00 … 10)
 docs/images/   illustrations used in this README (synthetic data)
 CLAUDE.md  bootstrap instructions that Claude Code reads automatically
 ```
@@ -62,6 +66,7 @@ CLAUDE.md  bootstrap instructions that Claude Code reads automatically
 | `07-operations-and-quality` | server, `start.sh`, testing protocol, lessons learned |
 | `08-roadmap-and-comparison` | comparison with GoldenCheetah, candidate features, non-goals |
 | `09-reference-data` | config template, percentile table, colours, FIT fields |
+| `10-optional-local-ai` | **optional** local-AI ride summary (asked first, off by default) |
 
 ---
 
@@ -163,7 +168,7 @@ Then tell Claude, for example:
 ### 6 · What Claude will do
 
 1. Review the plan, list contradictions and ask you a short round of questions (language, weight, max heart rate, bikes, how to access Garmin, default period…).
-2. Build in **phases 0–12** (environment → Garmin access → data model → metrics → API → frontend shell → pages → bikes and wear → wellness → calendar and pauses → ride detail → radar → operations), running **acceptance checks on your data** at the end of each.
+2. Build in **phases 0–12** (plus the optional phase 13 only if you ask for it) (environment → Garmin access → data model → metrics → API → frontend shell → pages → bikes and wear → wellness → calendar and pauses → ride detail → radar → operations), running **acceptance checks on your data** at the end of each.
 3. Tell you honestly what it verified, what it could not, and what failed.
 
 The first import of a long history can take a while because Garmin rate-limits requests; the importer is **resumable**.
@@ -216,7 +221,7 @@ Fork the repository and edit the files in `plan/`: change the pages, the thresho
 
 ## Honest limits
 
-- The finished app contains **no AI model**: the "Coach" is rule-based. The name is a nod to the way it is built.
+- The finished app contains **no AI model by default**: the "Coach" is rule-based. The only AI is the **optional**, local ride summary (`plan/en/10-optional-local-ai.md`): a small model that can be wrong, clearly labelled, with its input data one click away. The name is a nod to the way the app is built.
 - Thresholds, wear indices, climbs, FTP/critical power, the radar scores and the rider-type shapes are **estimates or hypotheses**, labelled as such. Best efforts in rides are not tests.
 - The percentile reference is a generic population table (not corrected for age or discipline).
 - Garmin may change its API at any time. The plan lists what to re-verify.

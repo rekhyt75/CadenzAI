@@ -77,7 +77,7 @@ Regole per usare l'esportazione:
 
 - Il file della chiave ha modalità `600`; il repository non contiene mai né la chiave, né il DB, né i file FIT, né l'esportazione (aggiungi `data/`, `raw_data/`, `.venv/`, `node_modules/` a `.gitignore`).
 - Analizza le esportazioni con codice semplice: `python -I` (modalità isolata) per gli script ad hoc, leggi i membri dello ZIP in memoria, mai `eval`, non eseguire mai nulla trovato in un download, non fidarti mai dei nomi di file dentro un archivio.
-- Non inviare a terzi alcuna uscita, posizione o dato personale. L'unica eccezione voluta è la mappa del percorso, che carica le **tessere di OpenStreetMap** (`https://tile.openstreetmap.org/{z}/{x}/{y}.png`): il server delle tessere vede l'area guardata e l'IP, mai i dati dell'uscita. Rispetta la politica d'uso delle tessere OSM (attribuzione visibile, nessun download massivo, nessuna cache delle tessere) e offri sempre il disegno offline.
+- Non inviare a terzi alcuna uscita, posizione o dato personale. L'unica eccezione voluta è la mappa del percorso, che carica le **tessere di OpenStreetMap** (`https://tile.openstreetmap.org/{z}/{x}/{y}.png`): il server delle tessere vede l'area guardata e l'IP, mai i dati dell'uscita. Rispetta la politica d'uso delle tessere OSM (attribuzione visibile, nessun download massivo, nessuna cache delle tessere) e offri sempre il disegno offline. Il riassunto IA locale facoltativo (`10`) **non** aggiunge dati in uscita (il modello gira su `127.0.0.1`), solo il download una tantum del programma Ollama e del modello.
 - Quando cerchi online specifiche di prodotti o documentazione, invia solo nomi generici di prodotto, mai dati personali.
 - Se la chiave viene mai mostrata per errore, dillo all'utente e consiglia di ruotarla.
 

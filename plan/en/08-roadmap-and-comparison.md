@@ -33,7 +33,7 @@ The "freewheeling duplicate" processor of GoldenCheetah removes the same artefac
 
 ## 3. Deliberately not built
 
-Trainer/ERG control and workout editor, running and multi-sport analytics, user formula editors, R/Python runtimes, many import formats, upload to Strava or other services, aerodynamic CdA estimation (little value at MTB speeds — untested), any claim of "AI" (the Coach is rule-based).
+Trainer/ERG control and workout editor, running and multi-sport analytics, user formula editors, R/Python runtimes, many import formats, upload to Strava or other services, aerodynamic CdA estimation (little value at MTB speeds — untested), any claim of "AI" for the Coach (it is rule-based; the only AI is the optional local summary of `10`, clearly labelled).
 
 ## 4. Honest limits to repeat to the user
 

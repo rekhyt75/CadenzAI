@@ -18,6 +18,7 @@ Commands: `start | stop | restart | status | logs [N] | run`. Behaviour to repro
 - `start`: if already running say so and exit 0; otherwise refuse politely if **another program** uses the port (never touch it); launch Uvicorn **fully detached** and wait (≤ 20 s) for `GET /api/meta` = 200; write the PID file `data/server[-<port>].pid`; print the URL.
 - `stop`: find the PID (PID file, else the listener of the port) and verify with `/proc/<pid>/cmdline` that it is **uvicorn `app:app` started on this very port** before sending `SIGTERM`; escalate to `SIGKILL` after 10 s; warn if a Garmin update is running ("it resumes on the next start"). Exit 0 if not running.
 - `restart` = stop + start. `status`: PID, uptime, URL, HTTP code, the sync state and the log path; **exit code 0 if running, 3 if not**. `logs`: no argument → follow the log; a number → last N lines (validate it). `run`: foreground.
+- With the optional local AI (`10`), `start` also launches Ollama (loopback only) if installed and not running, and `stop` stops it only if the script started it.
 - Host/port from environment variables (`<APP>_HOST`, `<APP>_PORT`); the PID file is **per port**.
 
 Lessons (each one cost a failed run in the reference build):

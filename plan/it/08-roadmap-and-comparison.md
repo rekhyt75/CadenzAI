@@ -33,7 +33,7 @@ Il processore "freewheeling duplicate" di GoldenCheetah rimuove lo stesso artefa
 
 ## 3. Cosa deliberatamente non si fa
 
-Controllo del trainer/ERG ed editor di allenamenti, analisi di corsa e multisport, editor di formule per l'utente, runtime R/Python, molti formati di importazione, caricamento su Strava o altri servizi, tile di mappe online (privacy), stima aerodinamica del CdA (poco valore alle velocità della MTB — non testata), qualsiasi pretesa di "AI" (il Coach è basato su regole).
+Controllo del trainer/ERG ed editor di allenamenti, analisi di corsa e multisport, editor di formule per l'utente, runtime R/Python, molti formati di importazione, caricamento su Strava o altri servizi, stima aerodinamica del CdA (poco valore alle velocità della MTB — non testata), qualsiasi pretesa di "AI" per il Coach (è basato su regole; l'unica IA è il riassunto locale facoltativo di `10`, chiaramente etichettato).
 
 ## 4. Limiti onesti da ripetere all'utente
 
