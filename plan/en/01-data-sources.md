@@ -77,7 +77,7 @@ Rules for using the export:
 
 - The key file has mode `600`; the repository never contains it, nor the DB, nor FIT files, nor the export (add `data/`, `raw_data/`, `.venv/`, `node_modules/` to `.gitignore`).
 - Parse exports with plain code: `python -I` (isolated mode) for ad-hoc scripts, read ZIP members in memory, never `eval`, never execute anything found in a download, never trust file names inside an archive.
-- Do not send any ride, location or personal datum to third parties. In particular **do not use online map tiles** (the route is drawn locally from the GPS points).
+- Do not send any ride, location or personal datum to third parties. The one deliberate exception is the route map, which loads **OpenStreetMap tiles** (`https://tile.openstreetmap.org/{z}/{x}/{y}.png`): the tile server sees the area being viewed and the visitor's IP, never the ride data. Respect the OSM tile usage policy (visible attribution, no bulk download, no tile caching) and always offer the offline drawing.
 - When looking up product specs or documentation online, send only generic product names, never personal data.
 - If the key is ever displayed by mistake, tell the user and recommend rotating it.
 

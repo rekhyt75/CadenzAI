@@ -72,7 +72,7 @@ Raccoglile in un unico breve giro (usa i valori predefiniti dell'ultima colonna 
 | 11 | Porta e host del server locale | `127.0.0.1:8765` |
 | 12 | Tema colore | segui il sistema, con un interruttore sole/luna |
 
-Dì chiaramente all'utente: le tessere delle mappe esterne **non** vengono usate (privacy); la Personal API di Garmin **non ha endpoint per bici/attrezzatura**; l'app **non contiene alcun modello di IA** (il "Coach" è basato su regole) a meno che l'utente non ne aggiunga uno.
+Dì chiaramente all'utente: la mappa del percorso carica le **tessere di OpenStreetMap** da internet (OSM vede l'area che si sta guardando, mai i dati dell'uscita; l'app ripiega su un disegno offline); la Personal API di Garmin **non ha endpoint per bici/attrezzatura**; l'app **non contiene alcun modello di IA** (il "Coach" è basato su regole) a meno che l'utente non ne aggiunga uno.
 
 ## 5. Architettura e struttura del repository
 
@@ -114,7 +114,7 @@ Ogni fase termina con controlli di accettazione eseguiti su dati reali. I dettag
 | 7 | Bici, componenti e usura, uscite da abbinare (`05`) | i numeri di usura coincidono con i totali SQL diretti; avvisi all'80 % e al 100 % |
 | 8 | Wellness: sonno/HRV/FC a riposo/Body Battery, pagine Recupero e Correlazioni (`03`, `04`) | i valori coincidono con l'API di Garmin per lo stesso giorno |
 | 9 | Pause e motivi; Calendario (`06`) | le fasce di pausa compaiono nei grafici di carico/recupero e nel calendario |
-| 10 | Dettaglio uscita, quadranti cadenza/coppia, disaccoppiamento aerobico (`04`, `06`) | percorso disegnato senza tessere esterne; grafici sincronizzati |
+| 10 | Dettaglio uscita, quadranti cadenza/coppia, disaccoppiamento aerobico (`04`, `06`) | percorso su mappa OpenStreetMap con ripiego offline; grafici sincronizzati |
 | 11 | Radar del profilo del ciclista (7 assi, due viste) (`04`, `06`) | ogni asse indica la sua metrica, la dimensione del campione e le ipotesi |
 | 12 | Operatività: `start.sh`, test della sincronizzazione incrementale, scansione completa delle pagine, note (`07`) | elimina un'uscita dal DB, riavvia: viene scaricata di nuovo ed è identica |
 

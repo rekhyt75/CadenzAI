@@ -72,7 +72,7 @@ Collect these in one short round (use the defaults in the last column if the use
 | 11 | Port and host of the local server | `127.0.0.1:8765` |
 | 12 | Colour theme | follow the system, with a sun/moon switch |
 
-State clearly to the user: external map tiles are **not** used (privacy); the Garmin Personal API has **no bike/gear endpoint**; the app contains **no AI model** (the "Coach" is rule-based) unless they add one.
+State clearly to the user: the route map loads **OpenStreetMap tiles** from the internet (OSM sees the area being viewed, never the ride data; the app falls back to an offline drawing); the Garmin Personal API has **no bike/gear endpoint**; the app contains **no AI model** (the "Coach" is rule-based) unless they add one.
 
 ## 5. Architecture and repository layout
 
@@ -114,7 +114,7 @@ Each phase ends with acceptance checks run on real data. Details are in the file
 | 7 | Bikes, components and wear, rides-to-match (`05`) | wear numbers match direct SQL totals; alerts at 80 % and 100 % |
 | 8 | Wellness: sleep/HRV/resting HR/Body Battery, Recovery and Correlations pages (`03`, `04`) | values match the Garmin API for the same day |
 | 9 | Pauses and reasons; Calendar (`06`) | pause bands appear on load/recovery charts and in the calendar |
-| 10 | Ride detail, cadence/torque quadrants, aerobic decoupling (`04`, `06`) | route drawn without external tiles; synced charts |
+| 10 | Ride detail, cadence/torque quadrants, aerobic decoupling (`04`, `06`) | route on an OpenStreetMap map with offline fallback; synced charts |
 | 11 | Rider profile radar (7 axes, two views) (`04`, `06`) | each axis states its metric, sample size and assumptions |
 | 12 | Operations: `start.sh`, incremental-sync test, full-page scan, notes (`07`) | delete one ride from the DB, restart, it is re-downloaded and identical |
 

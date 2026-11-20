@@ -25,7 +25,7 @@ Ognuno ha bici, sensori e curiosità diversi. Un plan lo puoi **leggere, modific
 - **Scarica da sola uscite e dati dell'orologio da Garmin**, solo il nuovo, a ogni apertura della pagina (potenza, frequenza cardiaca, file FIT originali, sonno, HRV, FC a riposo, Body Battery).
 - **Quattro aree:** Statistiche generali · Calendario · Singola uscita · Officina (bici e componenti).
 - **Radar del profilo del ciclista** con sette qualità (VO₂max, soglia, sprint, resistenza, salita, passo in pianura, recupero) e confronto con i tipi di ciclista.
-- **Dettaglio uscita:** grafici sincronizzati, tracciato disegnato in locale (senza mappe online), giri, zone, migliori sforzi, mappa coppia-cadenza, disaccoppiamento aerobico.
+- **Dettaglio uscita:** grafici sincronizzati, percorso su mappa OpenStreetMap colorabile per velocità, pendenza, potenza, frequenza cardiaca… (con ripiego offline), giri, zone, migliori sforzi, mappa coppia-cadenza, disaccoppiamento aerobico.
 - **Parco bici e usura dei componenti:** soglie *e* un indice d'usura che tiene conto del percorso (i freni si consumano in discesa, la catena col lavoro in pedalata), avvisi all'80% e al 100%, bici abbinate alle uscite in automatico.
 - **Onesta per progetto:** non inventa mai un valore mancante, etichetta ogni stima, separa osservazione, ipotesi e raccomandazione.
 - **Privata per progetto:** tutto resta sul tuo computer. Escono solo le chiamate a Garmin.
@@ -197,7 +197,7 @@ Fai un fork del repository e modifica i file in `plan/`: cambia le pagine, le so
 ## Privacy e sicurezza in breve
 
 - Tutto è salvato **in locale** (SQLite + file FIT originali). Non viene caricato nulla.
-- **Nessuna mappa online**: il percorso è disegnato in locale dai tuoi punti GPS.
+- **L'unica richiesta esterna oltre a Garmin** è la mappa del percorso: tessere di OpenStreetMap, quindi OSM vede l'area che stai guardando (mai i dati delle tue uscite). Un interruttore passa a un disegno completamente offline.
 - Export, ZIP e file FIT sono trattati come **input non fidato**.
 - **Non** pubblicare il tuo database, i file FIT, l'export o la chiave. Se condividi la tua versione, condividi solo il codice.
 

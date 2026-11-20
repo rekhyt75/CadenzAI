@@ -25,7 +25,7 @@ Everyone rides different bikes, owns different sensors and wants different stati
 - **Pulls your rides and watch data from Garmin automatically**, only what is new, every time you open the page (power, heart rate, original FIT files, sleep, HRV, resting HR, Body Battery).
 - **Four areas:** General statistics · Calendar · Single ride · Workshop (bikes and components).
 - **Rider profile radar** with seven qualities (VO₂max, threshold, sprint, endurance, climbing, flat pace, recovery) and a comparison with rider types.
-- **Ride detail:** synchronised charts, route drawn locally (no map tiles), laps, zones, best efforts, torque-vs-cadence map, aerobic decoupling.
+- **Ride detail:** synchronised charts, route on an OpenStreetMap map you can colour by speed, gradient, power, heart rate… (with an offline fallback), laps, zones, best efforts, torque-vs-cadence map, aerobic decoupling.
 - **Bike fleet and component wear:** thresholds *and* a route-aware wear index (brakes wear on descents, chains on pedalling work), alerts at 80 % and 100 %, bikes matched to rides automatically.
 - **Honest by design:** it never invents a missing value, labels every estimate, separates observation, hypothesis and recommendation.
 - **Private by design:** everything stays on your computer. Only calls to Garmin leave it.
@@ -197,7 +197,7 @@ Fork the repository and edit the files in `plan/`: change the pages, the thresho
 ## Privacy and security in short
 
 - Everything is stored **locally** (SQLite + the original FIT files). Nothing is uploaded.
-- **No online map tiles**: the route is drawn from your GPS points locally.
+- **The only outside request besides Garmin** is the route map: OpenStreetMap tiles, so OSM sees the area you are viewing (never your ride data). A toggle switches to a fully offline drawing.
 - Exports, ZIPs and FIT files are treated as **untrusted input**.
 - Do **not** publish your database, FIT files, export or key. If you share your build, share the code only.
 
