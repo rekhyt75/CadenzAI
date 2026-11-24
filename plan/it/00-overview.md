@@ -16,7 +16,7 @@ Elenco di riferimento delle funzioni (dettagli negli altri file):
 
 | Area | Pagine |
 |---|---|
-| Statistiche generali | Fisiologia (KPI, volume vs carico, picchi, EF, zone, ultime uscite) · Profilo del ciclista (radar a 7 assi + confronto con i tipi di ciclista) · Efficienza cardiovascolare (EF, disaccoppiamento aerobico) · Power Analytics (curva potenza-durata, stime di FTP/CP) · Carico di allenamento (CTL/ATL/TSB) · Cadenza e coppia (quadranti) · Salite · Evoluzione (confronto tra periodi con un test statistico) · Correlazioni (carico vs dati dell'orologio) · Recupero (HRV, FC a riposo, sonno, Body Battery) · Coach (letture basate su regole) · Qualità dei dati |
+| Statistiche generali | Fisiologia (KPI, gauge di VO₂max e HRV, carta d'identità con confronto per età) · Volume e zone (volume vs carico, picchi, EF, zone, ultime uscite) · Profilo del ciclista (radar a 7 assi + confronto con i tipi di ciclista) · Efficienza cardiovascolare (EF, disaccoppiamento aerobico) · Power Analytics (curva potenza-durata, stime di FTP/CP) · Carico di allenamento (CTL/ATL/TSB) · Cadenza e coppia (quadranti) · Salite · Evoluzione (confronto tra periodi con un test statistico) · Correlazioni (carico vs dati dell'orologio) · Recupero (HRV, FC a riposo, sonno, Body Battery) · Coach (letture basate su regole) · Qualità dei dati |
 | Calendario | Calendario mensile con uscite, totali settimanali e pause · Uscite da abbinare (uscite la cui bici richiede conferma) · Pause e motivi |
 | Singola uscita | Dettaglio uscita (grafici sincronizzati, percorso, giri, zone, migliori sforzi, dinamica di pedalata, quadranti, disaccoppiamento) · Esplora le attività (tabella ricercabile e ordinabile) |
 | Officina | Parco Bici · Componenti e usura |

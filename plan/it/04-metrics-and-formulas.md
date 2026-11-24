@@ -116,3 +116,16 @@ Una manciata di schede, ciascuna con **Osservazione / Ipotesi / Raccomandazione*
 ## 14. Pagina Qualità dei dati
 
 Conteggi ed elenchi di: uscite senza potenza / senza FC (per mese), campioni di potenza scartati, uscite in cui il TSS calcolato da te differisce > 2 %, picchi di frequenza cardiaca sopra il massimo configurato, bici da confermare, pause senza motivo, giorni senza sonno/HRV/FC a riposo (calcolati sull'intervallo effettivo dei dati dell'orologio), più l'elenco dei **limiti noti** (il peso è un valore di profilo; la stima dell'FTP non è un test; le salite sono un algoritmo; il riscaldamento della CTL; l'API non espone il cambio).
+
+## 15. Indicatori fisiologici a gauge e tabelle di riferimento
+
+Quattro gauge a semicerchio (in stile contachilometri) e un insieme di barre. Ognuno dice con che cosa è confrontato e non dà mai un verdetto.
+
+| Indicatore | Fonte e scala |
+|---|---|
+| VO₂max (Garmin) | la stima dell'orologio (tabella `vo2max`). Livello (scarso, sufficiente, buono, eccellente, superiore) per sesso e fascia d'età dalla tabella di Garmin, basata sulle classificazioni del Cooper Institute, a `https://www.garmin.com/it-IT/blog/fitness/vo2max/`: leggi la pagina, citala, non inventare mai le soglie e non copiare la tabella nel repository. Età dalla data di nascita esatta. La lancetta dentro una fascia è indicativa |
+| HRV notturna (Garmin) | ultima notte, media di 7 notti e **la fascia di equilibrio personale** (`balanced_low`, `balanced_upper`): tre zone (sotto, dentro, sopra) e lo stato di Garmin così com'è. La finestra dell'andamento disegna la fascia come ombra, con la scelta del periodo |
+| FTP (Garmin) | l'FTP dell'ultima uscita (`activities.ftp`), la sua variazione dall'inizio del periodo e i W/kg; il valore non dipende dal periodo |
+| FC a riposo, Body Battery, punteggio del sonno | nessuna scala esterna: confronto con il solito dell'utente, la media ± 1 deviazione standard dei 60 giorni precedenti (servono almeno 14 giorni), tre zone. Dì che non è una soglia clinica |
+
+**Potenza per età e sesso.** Tabella `ref_power_age`: W/kg a 5 s, 1 min, 5 min e 20 min, con le colonne «10 % inferiore», «media» e «10 % superiore» per sei fasce d'età, da 20–29 a 70–79. Vengono dal video di GCN Italia «Quanto sei in forma per la tua età?» (`https://www.youtube.com/watch?v=B3uTsYNu8V0`). Non scaricare il video: chiedi all'utente gli screenshot delle tabelle e trascrivili. Registra il video come fonte, di' che lo studio originale non è indicato e che il significato di «10 %» è la dicitura del video, **non copiare i numeri nel repository**, e controlla la trascrizione (inferiore < media < superiore, valori in calo con l'età). Sulla carta d'identità disegna una barra per durata dal 10 % inferiore al 10 % superiore con il miglior valore di sempre come segno, e la posizione a parole.

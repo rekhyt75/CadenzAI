@@ -6,20 +6,23 @@ Una barra laterale a sinistra con **quattro aree comprimibili** (stato ricordato
 
 | Area | Voce | Usa il filtro del periodo |
 |---|---|---|
-| **Statistiche generali** | Fisiologia · Profilo del ciclista · Efficienza cardiovascolare · Power Analytics · Carico di allenamento · Cadenza e coppia · Salite · Evoluzione · Correlazioni · Recupero | sì |
+| **Statistiche generali** | Fisiologia · Volume e zone · Profilo del ciclista · Efficienza cardiovascolare · Power Analytics · Carico di allenamento · Cadenza e coppia · Salite · Evoluzione · Correlazioni · Recupero | sì |
 | | Coach · Qualità dei dati | no (finestre fisse) |
 | **Calendario** | Calendario · Uscite da abbinare · Pause e motivi | no |
 | **Singola uscita** | Dettaglio uscita · Esplora le attività | no / sì |
 | **Officina** | Parco Bici · Componenti e usura | parco sì / componenti no |
 
-**Barra superiore:** nelle pagine che usano il periodo, la riga di filtro `[ Tutti i tempi | Ultimi 2 anni | Ultimo anno | Ultimi 6 mesi | Ultimi 3 mesi | Ultimo mese ]` più "dal <data>"; nelle altre, una briciola di pane "Area › Pagina". A destra: testo di stato della sincronizzazione + pulsante "Aggiorna" e un **interruttore del tema sole/luna**. **Apri su "Ultimi 6 mesi".** "Tutti i tempi" significa tutto ciò che è salvato (nessun limite di età, vedi `01` §5). La riga di filtro delimita **ogni numero, grafico e tabella della pagina**; durante il ricaricamento mantieni il rendering precedente attenuato (nessuno scheletro, nessun salto del layout).
+**Barra superiore:** nelle pagine che usano il periodo, la riga di filtro `[ Tutti i tempi | Ultimi 2 anni | Ultimo anno | Ultimi 6 mesi | Ultimi 3 mesi | Ultimo mese ]` più "dal <data>"; nelle altre, una briciola di pane "Area › Pagina". A destra: testo di stato della sincronizzazione + pulsante "Aggiorna" e un **interruttore del tema sole/luna**; l'icona della scheda è una favicon SVG (`favicon.svg`, in `frontend/public`). **Apri su "Ultimi 6 mesi".** "Tutti i tempi" significa tutto ciò che è salvato (nessun limite di età, vedi `01` §5). La riga di filtro delimita **ogni numero, grafico e tabella della pagina**; durante il ricaricamento mantieni il rendering precedente attenuato (nessuno scheletro, nessun salto del layout).
 
 Badge della barra laterale: componenti oltre l'80 %, uscite da abbinare, pause senza motivo. "Dettaglio uscita" nel menu riapre l'ultima uscita vista. Ogni titolo di uscita in ogni tabella e nel calendario rimanda a `#ride/<id>`.
 
 ## 2. Specifiche delle pagine
 
 ### 2.1 Fisiologia
-Riquadri KPI (km, dislivello, ore, NP media, TSS totale, TSS/settimana, IF medio); una "carta d'identità" con i migliori valori di sempre a 5 s, 1 min, 5 min, 20 min, 60 min in W e W/kg e una breve osservazione/ipotesi; ore settimanali (con interruttore per i km), TSS settimanale, rapporto ATL/CTL; **picchi nel periodo (barre) contro il miglior valore di sempre (linea con marcatori)**; EF delle uscite > 90 min nel tempo; tempo per zona di potenza e per zona di frequenza cardiaca (mostra a parte le ore a 0 W); tabella delle **ultime 15 uscite** (data, titolo con link, km, dislivello, potenza media, NP, FC media, EF, TSS — quello di Garmin, con il valore proprio tra parentesi solo se distante > 2 % — e bici con una pillola rossa "incerta").
+**Deve stare in una schermata, senza lunghi scroll.** Due righe di riquadri, poi la carta d'identità. Prima riga: un unico riquadro con distanza, dislivello e ore (largo due colonne), NP media, FTP, TSS totale e TSS/settimana (con l'IF medio sotto). Seconda riga, in un contenitore a parte: il gauge del VO₂max e quello dell'HRV notturna, ciascuno largo due colonne, con un pulsante «Andamento» che apre una finestra con il grafico e una sua scelta del periodo (`04` §15). Dai alle colonne una **larghezza massima** e lascia lo spazio libero a destra: i riquadri non devono allargarsi con la finestra. La carta d'identità ha i migliori valori di sempre a 5 s, 1 min, 5 min, 20 min, 60 min in W e W/kg, una barra di confronto per durata con la tabella per età e sesso (`04` §15) e una breve osservazione/ipotesi.
+
+### 2.1b Volume e zone
+Tutto ciò che affollava Fisiologia: ore settimanali (con interruttore per i km), TSS settimanale, rapporto ATL/CTL; **picchi nel periodo (barre) contro il miglior valore di sempre (linea con marcatori)**; EF delle uscite > 90 min nel tempo; tempo per zona di potenza e per zona di frequenza cardiaca (mostra a parte le ore a 0 W); tabella delle **ultime 15 uscite** (data, titolo con link, km, dislivello, potenza media, NP, FC media, EF, TSS — quello di Garmin, con il valore proprio tra parentesi solo se distante > 2 % — e bici con una pillola rossa "incerta").
 
 ### 2.2 Profilo del ciclista
 Due schede: il radar a 7 assi (interruttore di vista *Forma attuale* / *Confronto con i tipi*, una finestra modale "?" con fonti e limiti, un menu dei tipi con predefinito **"più simile a te"**) e una tabella "le sette qualità, una per una" (definizione, metrica, valore, punteggio, dimensione del campione) più la classifica di somiglianza cliccabile. Apri su **Confronto con i tipi**. Vedi `04` §10.
@@ -46,7 +49,7 @@ Due intervalli di date (predefiniti secondo `04` §11), una casella "escludi le 
 Una mappa di calore a matrice (divergente blu/grigio/rosso), **una guida alla lettura a destra della matrice** (righe = colonne = gli stessi indicatori; significato dei colori; convenzione di forza |ρ| < 0.1 trascurabile, 0.1–0.3 debole, 0.3–0.5 moderata, ≥ 0.5 forte; diagonale; celle vuote; p contro ρ; non è causalità; due esempi calcolati dai dati; i valori della cella sotto il cursore), un interruttore per escludere i giorni di infortunio/malattia e un elenco ordinato comprimibile **senza area di scorrimento interna**.
 
 ### 2.10 Recupero
-HRV (notturno e media settimanale), FC a riposo (+ media a 7 giorni), punteggio del sonno (+ media a 7 giorni), Body Battery (massimo/minimo giornaliero), con bande delle pause. I giorni mancanti restano vuoti, mai riempiti.
+Tre gauge in alto (FC a riposo, massimo del Body Battery, punteggio del sonno) rispetto al solito dell'utente, con una nota che non è una soglia clinica (`04` §15). HRV (notturno e media settimanale), FC a riposo (+ media a 7 giorni), punteggio del sonno (+ media a 7 giorni), Body Battery (massimo/minimo giornaliero), con bande delle pause. I giorni mancanti restano vuoti, mai riempiti.
 
 ### 2.11 Coach e Qualità dei dati
 Vedi `04` §13–14.

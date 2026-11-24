@@ -6,20 +6,23 @@ A left sidebar with **four collapsible areas** (state remembered; the area of th
 
 | Area | Entry | Uses the period filter |
 |---|---|---|
-| **General statistics** | Physiology · Rider profile · Cardiovascular efficiency · Power analytics · Training load · Cadence and torque · Climbs · Evolution · Correlations · Recovery | yes |
+| **General statistics** | Physiology · Volume and zones · Rider profile · Cardiovascular efficiency · Power analytics · Training load · Cadence and torque · Climbs · Evolution · Correlations · Recovery | yes |
 | | Coach · Data quality | no (fixed windows) |
 | **Calendar** | Calendar · Rides to match · Pauses and reasons | no |
 | **Single ride** | Ride detail · Browse activities | no / yes |
 | **Workshop** | Bike fleet · Components and wear | fleet yes / components no |
 
-**Top bar:** on pages that use the period, the filter row `[ All time | Last 2 years | Last year | Last 6 months | Last 3 months | Last month ]` plus "from <date>"; on the others, a breadcrumb "Area › Page". On the right: sync status text + "Update" button, and a **sun/moon theme switch**. **Open on "Last 6 months".** "All time" means everything stored (no age cap, see `01` §5). The filter row scopes **every number, chart and table on the page**; while reloading, keep the previous render dimmed (no skeleton, no layout jump).
+**Top bar:** on pages that use the period, the filter row `[ All time | Last 2 years | Last year | Last 6 months | Last 3 months | Last month ]` plus "from <date>"; on the others, a breadcrumb "Area › Page". On the right: sync status text + "Update" button, and a **sun/moon theme switch**; the tab icon is an SVG favicon (`favicon.svg`, in `frontend/public`). **Open on "Last 6 months".** "All time" means everything stored (no age cap, see `01` §5). The filter row scopes **every number, chart and table on the page**; while reloading, keep the previous render dimmed (no skeleton, no layout jump).
 
 Sidebar badges: components over 80 %, rides to match, pauses without a reason. "Ride detail" in the menu reopens the last ride viewed. Every ride title in every table and in the calendar links to `#ride/<id>`.
 
 ## 2. Page specifications
 
 ### 2.1 Physiology
-KPI tiles (km, climbing, hours, mean NP, total TSS, TSS/week, mean IF); an "identity card" with the all-time bests at 5 s, 1 min, 5 min, 20 min, 60 min in W and W/kg and a short observation/hypothesis; weekly hours (toggle km), weekly TSS, ATL/CTL ratio; **peaks in the period (bars) against the all-time best (line with markers)**; EF of rides > 90 min over time; time per power zone and per heart-rate zone (show the 0 W hours separately); table of the **last 15 rides** (date, linked title, km, climbing, mean power, NP, mean HR, EF, TSS — Garmin's, with own value in brackets only if > 2 % apart — and bike with a red "uncertain" pill).
+**Must fit in one screen, no long scroll.** Two rows of tiles, then the identity card. Row one: a single box with distance, climbing and hours (two columns wide), mean NP, FTP, total TSS and TSS/week (with mean IF underneath). Row two, in its own container: the VO₂max gauge and the overnight HRV gauge, each two columns wide, with a "Trend" button that opens a modal with the chart and its own period selector (`04` §15). Give the columns a **maximum width** and leave the free space on the right: the boxes must not stretch with the window. The identity card has the all-time bests at 5 s, 1 min, 5 min, 20 min, 60 min in W and W/kg, one comparison bar per duration against the age and sex table (`04` §15) and a short observation/hypothesis.
+
+### 2.1b Volume and zones
+Everything that used to crowd Physiology: weekly hours (toggle km), weekly TSS, ATL/CTL ratio; **peaks in the period (bars) against the all-time best (line with markers)**; EF of rides > 90 min over time; time per power zone and per heart-rate zone (show the 0 W hours separately); table of the **last 15 rides** (date, linked title, km, climbing, mean power, NP, mean HR, EF, TSS — Garmin's, with own value in brackets only if > 2 % apart — and bike with a red "uncertain" pill).
 
 ### 2.2 Rider profile
 Two cards: the 7-axis radar (view switch *Current form* / *Comparison with types*, a "?" modal with sources and limits, a type menu defaulting to **"closest to you"**) and a table "the seven qualities, one by one" (definition, metric, value, score, sample size) plus the clickable similarity ranking. Open on **Comparison with types**. See `04` §10.
@@ -46,7 +49,7 @@ Two date ranges (defaults per `04` §11), a checkbox "exclude injury/illness pau
 A matrix heat-map (diverging blue/grey/red), **a reading guide to the right of the matrix** (rows = columns = the same indicators; colour meaning; strength convention |ρ| < 0.1 negligible, 0.1–0.3 weak, 0.3–0.5 moderate, ≥ 0.5 strong; diagonal; empty cells; p vs ρ; not causation; two examples computed from the data; the hovered cell's values), a toggle to exclude injury/illness days, and a collapsible sorted list **without an inner scrolling area**.
 
 ### 2.10 Recovery
-HRV (night and weekly average), resting HR (+7-day mean), sleep score (+7-day mean), Body Battery (daily max/min), with pause bands. Missing days are empty, never filled.
+Three gauges on top (resting HR, Body Battery maximum, sleep score) against the user's usual range, with a note that it is not a clinical threshold (`04` §15). HRV (night and weekly average), resting HR (+7-day mean), sleep score (+7-day mean), Body Battery (daily max/min), with pause bands. Missing days are empty, never filled.
 
 ### 2.11 Coach and Data quality
 See `04` §13–14.

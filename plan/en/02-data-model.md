@@ -27,8 +27,11 @@ One SQLite file (`data/<app>.db`, `PRAGMA` defaults are fine) plus the original 
 | `wellness_daily` | `day` | `resting_hr, min_hr, max_hr, steps, moderate_min, vigorous_min, stress_avg, bb_high, bb_low, bb_start, bb_sleepstart, respiration_hi/lo, kcal_active, source` (`export` or `api`) |
 | `sleep` | `day` | stage seconds, `score`, respiration, `sleep_stress`, `awake_count`, `feedback` |
 | `hrv` | `day` | `last_night_avg, weekly_avg, high5min, status, balanced_low, balanced_upper` |
+| `vo2max` | `day` | `value` (precise), `rounded`, `scope` (`ciclismo` or `generico`) |
+| `athlete` | `id` (always 1) | `sex`, `birth_year`, `birth_date`, `source`: local only, never in the repository |
+| `ref_power_age` | `duration_s, sex, age_band` | `low10, mean, top10, source, url` |
 | `bikes` | `id` | `name` (unique), `kind` (`mtb`, `gravel`, `strada`/road, `rulli`/indoor, `altro`), `status` (`attiva`/`in_vendita`/`venduta`), `bought_on, sold_on, price, list_price, sold_price, notes, color_slot` (1–8, **fixed per bike forever**) |
-| `components` | `id` | `bike, kind, label, model, source, installed_on, removed_on, price, vendor, threshold_km, threshold_h, threshold_elev, threshold_days, notes, is_upgrade, upgrade_value` |
+| `components` | `id` | `bike, kind, label, model, source, installed_on, removed_on, price, vendor, threshold_km, threshold_h, threshold_elev, threshold_days, notes, is_upgrade, upgrade_value, original` |
 | `pauses` | `start` | `end, reason, note, manual` (only user annotations are stored; automatic pauses are computed) |
 | `meta` | `key` | free key/value |
 

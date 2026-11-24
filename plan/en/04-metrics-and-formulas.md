@@ -116,3 +116,16 @@ A handful of cards, each with **Observation / Hypothesis / Recommendation** writ
 ## 14. Data quality page
 
 Counts and lists of: rides without power / without HR (by month), discarded power samples, rides where own TSS differs > 2 %, heart-rate peaks above the configured max, bikes to confirm, pauses without a reason, days missing sleep/HRV/resting HR (computed from the actual span of watch data), plus the list of **known limits** (weight is a profile value; FTP estimate is not a test; climbs are an algorithm; CTL warm-up; the API does not expose gear).
+
+## 15. Physiology gauges and reference tables
+
+Four semicircular gauges (speedometer style) and a set of bars. Each one says what it is compared with and never gives a verdict.
+
+| Indicator | Source and scale |
+|---|---|
+| VO₂max (Garmin) | the watch's estimate (table `vo2max`). Level (poor, fair, good, excellent, superior) by sex and age band from Garmin's table, based on the Cooper Institute classifications, at `https://www.garmin.com/it-IT/blog/fitness/vo2max/`: read the page, cite it, never invent thresholds and do not copy the table into the repository. Age from the exact birth date. The needle inside a band is indicative |
+| Overnight HRV (Garmin) | last night, the 7-night mean and **the user's own balanced range** (`balanced_low`, `balanced_upper`): three zones (below, within, above) and Garmin's status as given. The trend window draws the range as a shaded band, with the period selector |
+| FTP (Garmin) | the FTP of the latest ride (`activities.ftp`), its change since the start of the period and W/kg; the value does not depend on the period |
+| Resting HR, Body Battery, sleep score | no external scale: compared with the user's usual range, the mean ± 1 standard deviation of the previous 60 days (at least 14 days are needed), three zones. Say that it is not a clinical threshold |
+
+**Power by age and sex.** Table `ref_power_age`: W/kg at 5 s, 1 min, 5 min and 20 min, with the columns "10 % low", "mean" and "10 % high" for six age bands, 20–29 up to 70–79. They come from the GCN Italia video "Quanto sei in forma per la tua età?" (`https://www.youtube.com/watch?v=B3uTsYNu8V0`). Do not download the video: ask the user for screenshots of the tables and transcribe them. Record the video as the source, say that the original study is not stated and that the meaning of "10 %" is the video's wording, **do not copy the numbers into the repository**, and check the transcription (low < mean < high, values falling with age). On the identity card draw one bar per duration from the 10 % low to the 10 % high with the all-time best as a mark, and the position in words.

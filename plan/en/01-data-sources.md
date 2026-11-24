@@ -28,6 +28,7 @@ The response body is a JWT (about 24 h lifetime; read `exp` from the payload). K
 | Daily summaries | `/usersummary-service/v2/dailysummaries?startDate&endDate` | steps, resting HR, stress, Body Battery, intensity minutes |
 | Sleep summaries | `/sleep-service/sleep/dailySleepSummariesByDate?startDate&endDate` | ≤ 28 days per call |
 | HRV | `/hrv-service/hrv/daily/{start}/{end}` | ≤ 180 days per call; has the baseline band (`balancedLow/Upper`) and status |
+| VO₂max | `/metrics-service/metrics/maxmet/daily/{start}/{end}` | ≤ 170 days per call (a longer range answers 400); a value only on the days it changes; use the `cycling` block, else the `generic` one, and label which it was |
 | Weight | `/weight-service/weight/range/{start}/{end}?includeAll=true` | grams; may be a manual profile setting, not a measurement |
 | Zones | `/biometric-service/heartRateZones/v2` | per-sport zone floors, max HR, lactate threshold HR |
 | Profile | `/userprofile-service/userprofile/settings` | units, display name (do not store personal fields) |
@@ -35,7 +36,7 @@ The response body is a JWT (about 24 h lifetime; read `exp` from the payload). K
 **Known limitations to tell the user:**
 
 - All **gear/equipment endpoints return 404** (they are not on the allow-list). A ride's assigned bike therefore **cannot** be read through the API; see `05` for how bikes are matched instead.
-- Some metrics (training readiness, race predictions, VO₂max) are not exposed.
+- Some metrics (training readiness, race predictions) are not exposed. **VO₂max is exposed** (see the endpoint table): check each metric on the API before declaring it missing.
 - The API is rate-limited. Implement:
   - a minimum interval of ~1 s between calls;
   - on `429`, wait `Retry-After` (or 65 s if absent) and retry, up to 6 times, printing the wait;
@@ -64,6 +65,7 @@ Garmin Connect → Account → *Export your data*. The ZIP/folders contain, amon
 | `DI_CONNECT/DI-Connect-Fitness/*_gear.json` | **the bike/shoe list and the link between each activity and its gear** |
 | `DI_CONNECT/DI-Connect-Fitness/*_summarizedActivities.json` | activity summaries |
 | `DI_CONNECT/DI-Connect-Metrics/*` | training load, max-MET (VO₂max) and cycling-ability history |
+| `DI_CONNECT/DI-Connect-User/user_profile.json` | sex and birth date: used only to place the user in an age band (`04` §15); keep them in a local table, never in the repository |
 
 Rules for using the export:
 

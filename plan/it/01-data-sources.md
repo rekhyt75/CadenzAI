@@ -28,6 +28,7 @@ Il corpo della risposta è un JWT (durata di circa 24 h; leggi `exp` dal payload
 | Riepiloghi giornalieri | `/usersummary-service/v2/dailysummaries?startDate&endDate` | passi, FC a riposo, stress, Body Battery, minuti di intensità |
 | Riepiloghi del sonno | `/sleep-service/sleep/dailySleepSummariesByDate?startDate&endDate` | ≤ 28 giorni per chiamata |
 | HRV | `/hrv-service/hrv/daily/{start}/{end}` | ≤ 180 giorni per chiamata; contiene la fascia di riferimento (`balancedLow/Upper`) e lo stato |
+| VO₂max | `/metrics-service/metrics/maxmet/daily/{start}/{end}` | ≤ 170 giorni per chiamata (un intervallo più lungo risponde 400); un valore solo nei giorni in cui cambia; usa il blocco `cycling`, altrimenti quello `generic`, e indica quale era |
 | Peso | `/weight-service/weight/range/{start}/{end}?includeAll=true` | grammi; può essere un'impostazione manuale del profilo, non una misura |
 | Zone | `/biometric-service/heartRateZones/v2` | soglie inferiori delle zone per sport, FC massima, FC alla soglia del lattato |
 | Profilo | `/userprofile-service/userprofile/settings` | unità, nome visualizzato (non salvare i campi personali) |
@@ -35,7 +36,7 @@ Il corpo della risposta è un JWT (durata di circa 24 h; leggi `exp` dal payload
 **Limiti noti da comunicare all'utente:**
 
 - Tutti gli **endpoint di attrezzatura/gear restituiscono 404** (non sono nella lista consentita). La bici assegnata a un'uscita **non** può quindi essere letta tramite l'API; vedi `05` per come le bici vengono abbinate in alternativa.
-- Alcune metriche (training readiness, previsioni di gara, VO₂max) non sono esposte.
+- Alcune metriche (training readiness, previsioni di gara) non sono esposte. **Il VO₂max è esposto** (vedi la tabella degli endpoint): controlla ogni metrica sull'API prima di dichiararla mancante.
 - L'API ha un limite di richieste. Implementa:
   - un intervallo minimo di ~1 s tra le chiamate;
   - su `429`, attendi `Retry-After` (o 65 s se assente) e riprova, fino a 6 volte, stampando l'attesa;
@@ -64,6 +65,7 @@ Garmin Connect → Account → *Esporta i tuoi dati*. Lo ZIP/le cartelle conteng
 | `DI_CONNECT/DI-Connect-Fitness/*_gear.json` | **l'elenco di bici/scarpe e il legame tra ogni attività e la sua attrezzatura** |
 | `DI_CONNECT/DI-Connect-Fitness/*_summarizedActivities.json` | riepiloghi delle attività |
 | `DI_CONNECT/DI-Connect-Metrics/*` | carico di allenamento, max-MET (VO₂max) e storico della capacità ciclistica |
+| `DI_CONNECT/DI-Connect-User/user_profile.json` | sesso e data di nascita: servono solo a collocare l'utente in una fascia d'età (`04` §15); tienili in una tabella locale, mai nel repository |
 
 Regole per usare l'esportazione:
 

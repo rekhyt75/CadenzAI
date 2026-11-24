@@ -16,7 +16,7 @@ Reference feature list (details in the other files):
 
 | Area | Pages |
 |---|---|
-| General statistics | Physiology (KPIs, volume vs load, peaks, EF, zones, last rides) · Rider profile (7-axis radar + comparison with rider types) · Cardiovascular efficiency (EF, aerobic decoupling) · Power analytics (power-duration curve, FTP/CP estimates) · Training load (CTL/ATL/TSB) · Cadence and torque (quadrants) · Climbs · Evolution (period comparison with a statistical test) · Correlations (load vs watch data) · Recovery (HRV, resting HR, sleep, Body Battery) · Coach (rule-based readings) · Data quality |
+| General statistics | Physiology (KPIs, VO₂max and HRV gauges, identity card with age comparison) · Volume and zones (volume vs load, peaks, EF, zones, last rides) · Rider profile (7-axis radar + comparison with rider types) · Cardiovascular efficiency (EF, aerobic decoupling) · Power analytics (power-duration curve, FTP/CP estimates) · Training load (CTL/ATL/TSB) · Cadence and torque (quadrants) · Climbs · Evolution (period comparison with a statistical test) · Correlations (load vs watch data) · Recovery (HRV, resting HR, sleep, Body Battery) · Coach (rule-based readings) · Data quality |
 | Calendar | Month calendar with rides, week totals and pauses · Rides to match (rides whose bike needs confirmation) · Pauses and reasons |
 | Single ride | Ride detail (synchronised charts, route, laps, zones, best efforts, pedal dynamics, quadrants, decoupling) · Browse activities (searchable, sortable table) |
 | Workshop | Bike fleet · Components and wear |

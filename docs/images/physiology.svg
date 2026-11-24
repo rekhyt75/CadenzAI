@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 780" width="1280" height="780" role="img" aria-label="Illustrative mockup of the Physiology page with synthetic data" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#131d2e"/></linearGradient></defs>
+<rect width="1280" height="780" rx="18" fill="url(#bg)"/>
+<rect x="0" y="0" width="1280" height="40" rx="18" fill="#172334"/><rect x="0" y="22" width="1280" height="18" fill="#172334"/>
+<circle cx="26" cy="20" r="6" fill="#ff5f57"/>
+<circle cx="48" cy="20" r="6" fill="#febc2e"/>
+<circle cx="70" cy="20" r="6" fill="#28c840"/>
+<text x="640" y="25" font-size="13" fill="#8a97ab" font-weight="500" text-anchor="middle" >CadenzAI · 127.0.0.1:8765</text>
+<rect x="0" y="40" width="238" height="740" fill="#0f1828"/>
+<text x="26" y="80" font-size="18" fill="#f2f4f8" font-weight="700" text-anchor="start" >CadenzAI</text>
+<text x="26" y="132" font-size="11" fill="#8a97ab" font-weight="700" text-anchor="start" letter-spacing="1">⌄ GENERAL STATISTICS</text>
+<rect x="12" y="135" width="214" height="28" rx="7" fill="#24334a"/>
+<text x="34" y="154" font-size="14" fill="#f2f4f8" font-weight="600" text-anchor="start" >Physiology</text>
+<text x="34" y="182" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Volume and zones</text>
+<text x="34" y="210" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Rider profile</text>
+<text x="34" y="238" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Efficiency</text>
+<text x="34" y="266" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Power analytics</text>
+<text x="34" y="294" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Training load</text>
+<text x="34" y="322" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Recovery</text>
+<text x="26" y="364" font-size="11" fill="#8a97ab" font-weight="700" text-anchor="start" letter-spacing="1">⌄ CALENDAR</text>
+<text x="34" y="386" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Calendar</text>
+<text x="34" y="414" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Rides to match</text>
+<text x="26" y="456" font-size="11" fill="#8a97ab" font-weight="700" text-anchor="start" letter-spacing="1">⌄ SINGLE RIDE</text>
+<text x="34" y="478" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Ride detail</text>
+<text x="26" y="520" font-size="11" fill="#8a97ab" font-weight="700" text-anchor="start" letter-spacing="1">⌄ WORKSHOP</text>
+<text x="34" y="542" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Bike fleet</text>
+<text x="34" y="570" font-size="14" fill="#c4cddb" font-weight="400" text-anchor="start" >Components</text>
+<rect x="262" y="62" width="96" height="30" rx="8" fill="#172334" stroke="#33445f"/>
+<text x="310.0" y="82" font-size="13" fill="#c4cddb" font-weight="600" text-anchor="middle" >All time</text>
+<rect x="364" y="62" width="87" height="30" rx="8" fill="#172334" stroke="#33445f"/>
+<text x="407.5" y="82" font-size="13" fill="#c4cddb" font-weight="600" text-anchor="middle" >2 years</text>
+<rect x="457" y="62" width="79" height="30" rx="8" fill="#172334" stroke="#33445f"/>
+<text x="496.5" y="82" font-size="13" fill="#c4cddb" font-weight="600" text-anchor="middle" >1 year</text>
+<rect x="542" y="62" width="96" height="30" rx="8" fill="#f2f4f8" stroke="#33445f"/>
+<text x="590.0" y="82" font-size="13" fill="#0b1220" font-weight="600" text-anchor="middle" >6 months</text>
+<rect x="644" y="62" width="96" height="30" rx="8" fill="#172334" stroke="#33445f"/>
+<text x="692.0" y="82" font-size="13" fill="#c4cddb" font-weight="600" text-anchor="middle" >3 months</text>
+<rect x="746" y="62" width="87" height="30" rx="8" fill="#172334" stroke="#33445f"/>
+<text x="789.5" y="82" font-size="13" fill="#c4cddb" font-weight="600" text-anchor="middle" >1 month</text>
+<circle cx="1240" cy="77" r="16" fill="#172334" stroke="#33445f"/><circle cx="1240" cy="77" r="5" fill="#e5a611"/>
+<text x="262" y="140" font-size="26" fill="#f2f4f8" font-weight="700" text-anchor="start" >Physiology</text>
+<rect x="262" y="160" width="308" height="98" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="276" y="186" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >Distance</text>
+<text x="276" y="218" font-size="17" fill="#f2f4f8" font-weight="700" text-anchor="start" >1 592 km</text>
+<text x="276" y="238" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >34 rides</text>
+<text x="374" y="186" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >Climbing</text>
+<text x="374" y="218" font-size="17" fill="#f2f4f8" font-weight="700" text-anchor="start" >33 410 m</text>
+<text x="472" y="186" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >Hours</text>
+<text x="472" y="218" font-size="17" fill="#f2f4f8" font-weight="700" text-anchor="start" >131.6 h</text>
+<rect x="582" y="160" width="148" height="98" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="596" y="186" font-size="13" fill="#8a97ab" font-weight="400" text-anchor="start" >Mean NP</text>
+<text x="596" y="220" font-size="24" fill="#f2f4f8" font-weight="700" text-anchor="start" >156 W</text>
+<text x="596" y="240" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >34 rides with power</text>
+<rect x="742" y="160" width="148" height="98" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="756" y="186" font-size="13" fill="#8a97ab" font-weight="400" text-anchor="start" >FTP (Garmin)</text>
+<text x="756" y="220" font-size="24" fill="#f2f4f8" font-weight="700" text-anchor="start" >220 W</text>
+<text x="756" y="240" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >+30 W in the period</text>
+<rect x="902" y="160" width="148" height="98" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="916" y="186" font-size="13" fill="#8a97ab" font-weight="400" text-anchor="start" >Total TSS</text>
+<text x="916" y="220" font-size="24" fill="#f2f4f8" font-weight="700" text-anchor="start" >6 540</text>
+<text x="916" y="240" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >Garmin, with power</text>
+<rect x="1062" y="160" width="148" height="98" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="1076" y="186" font-size="13" fill="#8a97ab" font-weight="400" text-anchor="start" >Weekly TSS</text>
+<text x="1076" y="220" font-size="24" fill="#f2f4f8" font-weight="700" text-anchor="start" >248</text>
+<text x="1076" y="240" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >mean IF 0.72</text>
+<rect x="262" y="272" width="308" height="138" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="276" y="298" font-size="13" fill="#8a97ab" font-weight="400" text-anchor="start" >VO₂max (Garmin)</text>
+<rect x="470" y="282" width="88" height="24" rx="7" fill="#1d2c42" stroke="#33445f"/>
+<text x="514" y="298" font-size="12" fill="#c4cddb" font-weight="600" text-anchor="middle" >Trend</text>
+<path d="M280.0,378.6 A54,54 0 0 1 289.5,349.4 L298.6,355.6 A43,43 0 0 0 291.0,378.9 Z" fill="#3987e5" opacity="0.18"/>
+<path d="M291.2,347.1 A54,54 0 0 1 316.0,329.1 L319.6,339.5 A43,43 0 0 0 299.9,353.8 Z" fill="#3987e5" opacity="0.28"/>
+<path d="M318.7,328.2 A54,54 0 0 1 349.3,328.2 L346.2,338.8 A43,43 0 0 0 321.8,338.8 Z" fill="#3987e5" opacity="0.38"/>
+<path d="M352.0,329.1 A54,54 0 0 1 376.8,347.1 L368.1,353.8 A43,43 0 0 0 348.4,339.5 Z" fill="#3987e5" opacity="1"/>
+<path d="M378.5,349.4 A54,54 0 0 1 388.0,378.6 L377.0,378.9 A43,43 0 0 0 369.4,355.6 Z" fill="#3987e5" opacity="0.58"/>
+<polygon points="354.8,349.4 330.7,377.8 337.3,382.2" fill="#f2f4f8"/><circle cx="334" cy="380" r="6" fill="#f2f4f8"/>
+<text x="334" y="400" font-size="11" fill="#8a97ab" font-weight="400" text-anchor="middle" >Excellent</text>
+<text x="412" y="348" font-size="28" fill="#f2f4f8" font-weight="700" text-anchor="start" >46.8</text>
+<text x="412" y="368" font-size="11" fill="#8a97ab" font-weight="400" text-anchor="start" >+0.0 in the period · 21 Nov</text>
+<text x="412" y="386" font-size="12" fill="#f2f4f8" font-weight="600" text-anchor="start" >Excellent</text>
+<text x="412" y="402" font-size="11" fill="#8a97ab" font-weight="400" text-anchor="start" >1.7 to Superior · Men 40–49</text>
+<rect x="582" y="272" width="308" height="138" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="596" y="298" font-size="13" fill="#8a97ab" font-weight="400" text-anchor="start" >Overnight HRV (Garmin)</text>
+<rect x="790" y="282" width="88" height="24" rx="7" fill="#1d2c42" stroke="#33445f"/>
+<text x="834" y="298" font-size="12" fill="#c4cddb" font-weight="600" text-anchor="middle" >Trend</text>
+<path d="M600.0,378.6 A54,54 0 0 1 614.8,342.8 L622.8,350.4 A43,43 0 0 0 611.0,378.9 Z" fill="#3987e5" opacity="0.25"/>
+<path d="M616.8,340.8 A54,54 0 0 1 691.2,340.8 L683.6,348.8 A43,43 0 0 0 624.4,348.8 Z" fill="#3987e5" opacity="1"/>
+<path d="M693.2,342.8 A54,54 0 0 1 708.0,378.6 L697.0,378.9 A43,43 0 0 0 685.2,350.4 Z" fill="#3987e5" opacity="0.25"/>
+<polygon points="649.4,343.3 650.0,380.5 658.0,379.5" fill="#f2f4f8"/><circle cx="654" cy="380" r="6" fill="#f2f4f8"/>
+<text x="654" y="400" font-size="11" fill="#8a97ab" font-weight="400" text-anchor="middle" >25–37 ms</text>
+<text x="732" y="348" font-size="28" fill="#f2f4f8" font-weight="700" text-anchor="start" >31 ms</text>
+<text x="732" y="368" font-size="11" fill="#8a97ab" font-weight="400" text-anchor="start" >last night · 24 Nov</text>
+<text x="732" y="386" font-size="12" fill="#f2f4f8" font-weight="600" text-anchor="start" >Balanced</text>
+<text x="732" y="402" font-size="11" fill="#8a97ab" font-weight="400" text-anchor="start" >mean 29 · range 25–37 ms</text>
+<rect x="262" y="424" width="996" height="338" rx="12" fill="#172334" stroke="#24334a"/>
+<text x="278" y="452" font-size="15" fill="#f2f4f8" font-weight="700" text-anchor="start" >Physiological identity card (all time)</text>
+<text x="278" y="472" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >All-time power bests with a weight of 80 kg. The profile is an estimate.</text>
+<text x="278" y="500" font-size="12" fill="#8a97ab" font-weight="700" text-anchor="start" >Duration</text>
+<text x="528" y="500" font-size="12" fill="#8a97ab" font-weight="700" text-anchor="end" >5 s</text>
+<text x="528" y="522" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >840</text>
+<text x="528" y="544" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >10.50</text>
+<text x="678" y="500" font-size="12" fill="#8a97ab" font-weight="700" text-anchor="end" >1 min</text>
+<text x="678" y="522" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >420</text>
+<text x="678" y="544" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >5.25</text>
+<text x="828" y="500" font-size="12" fill="#8a97ab" font-weight="700" text-anchor="end" >5 min</text>
+<text x="828" y="522" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >275</text>
+<text x="828" y="544" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >3.44</text>
+<text x="978" y="500" font-size="12" fill="#8a97ab" font-weight="700" text-anchor="end" >20 min</text>
+<text x="978" y="522" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >220</text>
+<text x="978" y="544" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >2.75</text>
+<text x="1128" y="500" font-size="12" fill="#8a97ab" font-weight="700" text-anchor="end" >60 min</text>
+<text x="1128" y="522" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >188</text>
+<text x="1128" y="544" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="end" >2.35</text>
+<text x="278" y="522" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="start" >Watt</text>
+<text x="278" y="544" font-size="12" fill="#c4cddb" font-weight="400" text-anchor="start" >W/kg</text>
+<line x1="278" x2="1242" y1="508" y2="508" stroke="#24334a"/>
+<text x="278" y="574" font-size="12" fill="#f2f4f8" font-weight="600" text-anchor="start" >Where you stand against men 40–49 (W/kg): the bar runs from the 10% low to the 10% high of the table; the black mark is you.</text>
+<text x="278" y="612" font-size="13" fill="#f2f4f8" font-weight="700" text-anchor="start" >5 s</text>
+<rect x="342" y="600" width="620" height="14" rx="7" fill="#24334a"/>
+<clipPath id="c0"><rect x="342" y="600" width="620" height="14" rx="7"/></clipPath><g clip-path="url(#c0)">
+<rect x="342.0" y="600" width="111.6" height="14" fill="#3987e5" opacity="0.12"/>
+<rect x="453.6" y="600" width="198.4" height="14" fill="#3987e5" opacity="0.28"/>
+<rect x="652.0" y="600" width="198.4" height="14" fill="#3987e5" opacity="0.55"/>
+<rect x="850.4" y="600" width="111.6" height="14" fill="#3987e5" opacity="0.85"/>
+</g>
+<rect x="786.9" y="595" width="3" height="24" rx="2" fill="#f2f4f8"/>
+<text x="982" y="612" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >between mean and 10% high</text>
+<text x="278" y="646" font-size="13" fill="#f2f4f8" font-weight="700" text-anchor="start" >1 min</text>
+<rect x="342" y="634" width="620" height="14" rx="7" fill="#24334a"/>
+<clipPath id="c1"><rect x="342" y="634" width="620" height="14" rx="7"/></clipPath><g clip-path="url(#c1)">
+<rect x="342.0" y="634" width="111.6" height="14" fill="#3987e5" opacity="0.12"/>
+<rect x="453.6" y="634" width="198.4" height="14" fill="#3987e5" opacity="0.28"/>
+<rect x="652.0" y="634" width="198.4" height="14" fill="#3987e5" opacity="0.55"/>
+<rect x="850.4" y="634" width="111.6" height="14" fill="#3987e5" opacity="0.85"/>
+</g>
+<rect x="724.9" y="629" width="3" height="24" rx="2" fill="#f2f4f8"/>
+<text x="982" y="646" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >between mean and 10% high</text>
+<text x="278" y="680" font-size="13" fill="#f2f4f8" font-weight="700" text-anchor="start" >5 min</text>
+<rect x="342" y="668" width="620" height="14" rx="7" fill="#24334a"/>
+<clipPath id="c2"><rect x="342" y="668" width="620" height="14" rx="7"/></clipPath><g clip-path="url(#c2)">
+<rect x="342.0" y="668" width="111.6" height="14" fill="#3987e5" opacity="0.12"/>
+<rect x="453.6" y="668" width="198.4" height="14" fill="#3987e5" opacity="0.28"/>
+<rect x="652.0" y="668" width="198.4" height="14" fill="#3987e5" opacity="0.55"/>
+<rect x="850.4" y="668" width="111.6" height="14" fill="#3987e5" opacity="0.85"/>
+</g>
+<rect x="650.5" y="663" width="3" height="24" rx="2" fill="#f2f4f8"/>
+<text x="982" y="680" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >between mean and 10% high</text>
+<text x="278" y="714" font-size="13" fill="#f2f4f8" font-weight="700" text-anchor="start" >20 min</text>
+<rect x="342" y="702" width="620" height="14" rx="7" fill="#24334a"/>
+<clipPath id="c3"><rect x="342" y="702" width="620" height="14" rx="7"/></clipPath><g clip-path="url(#c3)">
+<rect x="342.0" y="702" width="111.6" height="14" fill="#3987e5" opacity="0.12"/>
+<rect x="453.6" y="702" width="198.4" height="14" fill="#3987e5" opacity="0.28"/>
+<rect x="652.0" y="702" width="198.4" height="14" fill="#3987e5" opacity="0.55"/>
+<rect x="850.4" y="702" width="111.6" height="14" fill="#3987e5" opacity="0.85"/>
+</g>
+<rect x="613.3" y="697" width="3" height="24" rx="2" fill="#f2f4f8"/>
+<text x="982" y="714" font-size="12" fill="#8a97ab" font-weight="400" text-anchor="start" >just above the mean</text>
+<text x="278" y="744" font-size="11" fill="#8a97ab" font-weight="400" text-anchor="start" >Reference: GCN Italia, «Quanto sei in forma per la tua età?» (YouTube); the original source of its data is not stated.</text>
+</svg>

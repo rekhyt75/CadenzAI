@@ -12,7 +12,7 @@
 > This repository contains **no app**: it contains the *specification*. You download it, adapt it to your taste, point Claude Code at it, and it builds *your* dashboard on *your* computer.
 
 <p align="center">
-  <img src="docs/images/dashboard.svg" alt="Illustrative mockup of the dashboard (synthetic data)" width="92%"/><br/>
+  <img src="docs/images/physiology.svg" alt="Illustrative mockup of the dashboard, Physiology page with VO2max and HRV gauges (synthetic data)" width="92%"/><br/>
   <sub>Illustrative mockup, synthetic data. No real rides are shown in this repository.</sub>
 </p>
 
@@ -27,6 +27,7 @@ Everyone rides different bikes, owns different sensors and wants different stati
 
 - **Pulls your rides and watch data from Garmin automatically**, only what is new, every time you open the page (power, heart rate, original FIT files, sleep, HRV, resting HR, Body Battery).
 - **Four areas:** General statistics · Calendar · Single ride · Workshop (bikes and components).
+- **Physiology page that fits one screen:** VO₂max and overnight HRV as speedometer-style gauges (with a trend window and the shaded balanced range for HRV), FTP, and an identity card that compares your best efforts with age- and sex-based tables (cited, see `plan/en/04-metrics-and-formulas.md` §15).
 - **Rider profile radar** with seven qualities (VO₂max, threshold, sprint, endurance, climbing, flat pace, recovery) and a comparison with rider types.
 - **Ride detail:** synchronised charts, route on an OpenStreetMap map you can colour by speed, gradient, power, heart rate… (with an offline fallback), laps, zones, best efforts, torque-vs-cadence map, aerobic decoupling.
 - **Bike fleet and component wear:** thresholds *and* a route-aware wear index (brakes wear on descents, chains on pedalling work), alerts at 80 % and 100 %, bikes matched to rides automatically.
@@ -227,6 +228,21 @@ Fork the repository and edit the files in `plan/`: change the pages, the thresho
 - The percentile reference is a generic population table (not corrected for age or discipline).
 - Garmin may change its API at any time. The plan lists what to re-verify.
 - This is a personal project, **not affiliated with or endorsed by Garmin or Anthropic**. *Garmin* and *Garmin Connect* are trademarks of Garmin Ltd. or its subsidiaries.
+
+## Credits
+
+External data and tools the plan relies on. The plan cites them; this repository does not redistribute their data (the few reference tables it mentions must be read from the sources below, and each source's own terms apply).
+
+| Used for | Source |
+|---|---|
+| Your own Garmin data (API and data export) | [Garmin Connect](https://connect.garmin.com), personal API key from [Settings](https://connect.garmin.com/app/settings/personalApiToken) |
+| Optional conversational access to Garmin from Claude Code | [garmin-personal-mcp](https://github.com/Shape-Calendar/garmin-personal-mcp) (third-party: read its code before giving it your key) |
+| VO₂max levels by sex and age (Cooper Institute classifications) | [Garmin, "VO₂max"](https://www.garmin.com/it-IT/blog/fitness/vo2max/) |
+| Power by age and sex (5 s, 1 min, 5 min, 20 min) | [GCN Italia, "Quanto sei in forma per la tua età?"](https://www.youtube.com/watch?v=B3uTsYNu8V0) (YouTube). The original study is not stated in the video |
+| Power-profile percentiles for the rider radar | [Adapt Cycling, power profile](https://www.adaptcycling.com/tools/power-profile) (the page does not name its dataset) |
+| Used-bike value by age | [buycycle, "Quanto posso vendere la mia bici?"](https://buycycle.com/blog/it/post/quanto-posso-vendere-la-mia-bici/) |
+| Route map tiles | [OpenStreetMap](https://www.openstreetmap.org/copyright) (© OpenStreetMap contributors), [CyclOSM](https://www.cyclosm.org), [OpenTopoMap](https://opentopomap.org), [Humanitarian OpenStreetMap Team](https://www.hotosm.org); map library [Leaflet](https://leafletjs.com) |
+| Optional local AI summary | [Ollama](https://ollama.com) and the [Qwen 2.5 model](https://ollama.com/library/qwen2.5) |
 
 ## License
 

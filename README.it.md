@@ -12,7 +12,7 @@
 > Questo repository **non contiene l'app**: contiene la *specifica*. La scarichi, la adatti ai tuoi gusti, la dai a Claude Code e lui costruisce *la tua* dashboard sul *tuo* computer.
 
 <p align="center">
-  <img src="docs/images/dashboard.svg" alt="Mockup illustrativo della dashboard (dati sintetici)" width="92%"/><br/>
+  <img src="docs/images/physiology.svg" alt="Mockup illustrativo della dashboard, pagina Fisiologia con gauge di VO2max e HRV (dati sintetici)" width="92%"/><br/>
   <sub>Mockup illustrativo, dati sintetici. In questo repository non ci sono uscite reali.</sub>
 </p>
 
@@ -27,6 +27,7 @@ Ognuno ha bici, sensori e curiosità diversi. Un plan lo puoi **leggere, modific
 
 - **Scarica da sola uscite e dati dell'orologio da Garmin**, solo il nuovo, a ogni apertura della pagina (potenza, frequenza cardiaca, file FIT originali, sonno, HRV, FC a riposo, Body Battery).
 - **Quattro aree:** Statistiche generali · Calendario · Singola uscita · Officina (bici e componenti).
+- **Pagina Fisiologia che sta in una schermata:** VO₂max e HRV notturna come gauge in stile contachilometri (con una finestra dell'andamento e, per l'HRV, la fascia di equilibrio in ombra), FTP, e una carta d'identità che confronta i tuoi migliori sforzi con tabelle per età e sesso (con fonte, vedi `plan/it/04-metrics-and-formulas.md` §15).
 - **Radar del profilo del ciclista** con sette qualità (VO₂max, soglia, sprint, resistenza, salita, passo in pianura, recupero) e confronto con i tipi di ciclista.
 - **Dettaglio uscita:** grafici sincronizzati, percorso su mappa OpenStreetMap colorabile per velocità, pendenza, potenza, frequenza cardiaca… (con ripiego offline), giri, zone, migliori sforzi, mappa coppia-cadenza, disaccoppiamento aerobico.
 - **Parco bici e usura dei componenti:** soglie *e* un indice d'usura che tiene conto del percorso (i freni si consumano in discesa, la catena col lavoro in pedalata), avvisi all'80% e al 100%, bici abbinate alle uscite in automatico.
@@ -227,6 +228,21 @@ Fai un fork del repository e modifica i file in `plan/`: cambia le pagine, le so
 - Il riferimento dei percentili è una tabella generica di popolazione (non corretta per età o disciplina).
 - Garmin può cambiare la sua API in qualsiasi momento. Il plan elenca cosa ricontrollare.
 - È un progetto personale, **non affiliato né approvato da Garmin o da Anthropic**. *Garmin* e *Garmin Connect* sono marchi di Garmin Ltd. o delle sue società controllate.
+
+## Crediti
+
+Dati e strumenti esterni su cui si appoggia il plan. Il plan li cita; questo repository non ridistribuisce i loro dati (le poche tabelle di riferimento che nomina vanno lette dalle fonti qui sotto, e valgono i termini di ciascuna).
+
+| Usato per | Fonte |
+|---|---|
+| I tuoi dati Garmin (API ed esportazione) | [Garmin Connect](https://connect.garmin.com), chiave API personale dalle [Impostazioni](https://connect.garmin.com/app/settings/personalApiToken) |
+| Accesso conversazionale facoltativo a Garmin da Claude Code | [garmin-personal-mcp](https://github.com/Shape-Calendar/garmin-personal-mcp) (di terzi: leggine il codice prima di dargli la chiave) |
+| Livelli di VO₂max per sesso ed età (classificazioni del Cooper Institute) | [Garmin, «VO₂max»](https://www.garmin.com/it-IT/blog/fitness/vo2max/) |
+| Potenza per età e sesso (5 s, 1 min, 5 min, 20 min) | [GCN Italia, «Quanto sei in forma per la tua età?»](https://www.youtube.com/watch?v=B3uTsYNu8V0) (YouTube). Lo studio originale non è indicato nel video |
+| Percentili del profilo di potenza per il radar | [Adapt Cycling, power profile](https://www.adaptcycling.com/tools/power-profile) (la pagina non nomina il suo insieme di dati) |
+| Valore dell'usato per età | [buycycle, «Quanto posso vendere la mia bici?»](https://buycycle.com/blog/it/post/quanto-posso-vendere-la-mia-bici/) |
+| Tessere della mappa del percorso | [OpenStreetMap](https://www.openstreetmap.org/copyright) (© contributori di OpenStreetMap), [CyclOSM](https://www.cyclosm.org), [OpenTopoMap](https://opentopomap.org), [Humanitarian OpenStreetMap Team](https://www.hotosm.org); libreria per le mappe [Leaflet](https://leafletjs.com) |
+| Riassunto IA locale facoltativo | [Ollama](https://ollama.com) e il [modello Qwen 2.5](https://ollama.com/library/qwen2.5) |
 
 ## Licenza
 
