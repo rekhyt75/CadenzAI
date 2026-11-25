@@ -129,3 +129,13 @@ Quattro gauge a semicerchio (in stile contachilometri) e un insieme di barre. Og
 | FC a riposo, Body Battery, punteggio del sonno | nessuna scala esterna: confronto con il solito dell'utente, la media ± 1 deviazione standard dei 60 giorni precedenti (servono almeno 14 giorni), tre zone. Dì che non è una soglia clinica |
 
 **Potenza per età e sesso.** Tabella `ref_power_age`: W/kg a 5 s, 1 min, 5 min e 20 min, con le colonne «10 % inferiore», «media» e «10 % superiore» per sei fasce d'età, da 20–29 a 70–79. Vengono dal video di GCN Italia «Quanto sei in forma per la tua età?» (`https://www.youtube.com/watch?v=B3uTsYNu8V0`). Non scaricare il video: chiedi all'utente gli screenshot delle tabelle e trascrivili. Registra il video come fonte, di' che lo studio originale non è indicato e che il significato di «10 %» è la dicitura del video, **non copiare i numeri nel repository**, e controlla la trascrizione (inferiore < media < superiore, valori in calo con l'età). Sulla carta d'identità disegna una barra per durata dal 10 % inferiore al 10 % superiore con il miglior valore di sempre come segno, e la posizione a parole.
+
+## 16. Controlli incrociati con i valori di Garmin
+
+Prima di tenere un algoritmo tuo, confrontalo con ciò che Garmin già salva. Risultati della build di riferimento, su un'uscita (controlla la tua, non fidarti di questi):
+
+- **Tempo nelle zone di frequenza cardiaca:** il file FIT ha messaggi `time_in_zone` (numero globale 216, sconosciuto a `fitparse`: leggi i campi numerici). Il record a livello di sessione ha `reference_mesg` 18; il campo 2 è il tempo per zona cardio in millisecondi e il campo 6 i confini delle zone. Il nostro conteggio coincideva entro l'1 %, quindi tieni il calcolo tuo e usa quello di Garmin come prova.
+- **Tempo nelle zone di potenza:** i confini di Garmin (campo 9) li decide il dispositivo e sono diversi da quelli di Coggan; i due non sono confrontabili. Tieni le zone standard e dì quali sono.
+- **Salite:** i messaggi `climb_pro` (numero 317) vengono da un percorso caricato sul dispositivo, non dal riconoscimento delle salite nell'uscita, quindi non sono un controllo alla pari. Tieni l'algoritmo tuo e non considerare verificata la decodifica di quei campi.
+- **Training Effect:** aerobico e anaerobico, scala 0–5, stanno nel messaggio di sessione del FIT (`total_training_effect`, `total_anaerobic_training_effect`) e coincidono con l'API; mostrali come riquadro KPI del dettaglio uscita.
+- **Potenza normalizzata, TSS e FTP** vengono da Garmin; NP e TSS calcolati da te servono solo come controllo (segnala una differenza oltre il 2 %).

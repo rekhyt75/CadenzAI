@@ -26,8 +26,9 @@ Ognuno ha bici, sensori e curiosità diversi. Un plan lo puoi **leggere, modific
 ## Cosa fa l'app finita
 
 - **Scarica da sola uscite e dati dell'orologio da Garmin**, solo il nuovo, a ogni apertura della pagina (potenza, frequenza cardiaca, file FIT originali, sonno, HRV, FC a riposo, Body Battery).
-- **Quattro aree:** Statistiche generali · Calendario · Singola uscita · Officina (bici e componenti).
+- **Quattro aree:** Statistiche generali · Calendario · Singola uscita · Officina (bici e componenti), più una pagina Impostazioni per il tuo profilo.
 - **Pagina Fisiologia che sta in una schermata:** VO₂max e HRV notturna come gauge in stile contachilometri (con una finestra dell'andamento e, per l'HRV, la fascia di equilibrio in ombra), FTP, e una carta d'identità che confronta i tuoi migliori sforzi con tabelle per età e sesso (con fonte, vedi `plan/it/04-metrics-and-formulas.md` §15).
+- **Il tuo profilo sta nel database, mai nel codice:** una pagina «Profilo utente» (sesso, data di nascita, peso, frequenza cardiaca massima, che può leggere da Garmin) e una pagina «Stress e sonno» con le ore di stress, la respirazione, le classi del sonno di Garmin e la fitness age.
 - **Radar del profilo del ciclista** con sette qualità (VO₂max, soglia, sprint, resistenza, salita, passo in pianura, recupero) e confronto con i tipi di ciclista.
 - **Dettaglio uscita:** grafici sincronizzati, percorso su mappa OpenStreetMap colorabile per velocità, pendenza, potenza, frequenza cardiaca… (con ripiego offline), giri, zone, migliori sforzi, mappa coppia-cadenza, disaccoppiamento aerobico.
 - **Parco bici e usura dei componenti:** soglie *e* un indice d'usura che tiene conto del percorso (i freni si consumano in discesa, la catena col lavoro in pedalata), avvisi all'80% e al 100%, bici abbinate alle uscite in automatico.

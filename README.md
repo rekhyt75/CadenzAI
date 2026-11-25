@@ -26,8 +26,9 @@ Everyone rides different bikes, owns different sensors and wants different stati
 ## What the finished app does
 
 - **Pulls your rides and watch data from Garmin automatically**, only what is new, every time you open the page (power, heart rate, original FIT files, sleep, HRV, resting HR, Body Battery).
-- **Four areas:** General statistics · Calendar · Single ride · Workshop (bikes and components).
+- **Four areas:** General statistics · Calendar · Single ride · Workshop (bikes and components), plus a Settings page for your profile.
 - **Physiology page that fits one screen:** VO₂max and overnight HRV as speedometer-style gauges (with a trend window and the shaded balanced range for HRV), FTP, and an identity card that compares your best efforts with age- and sex-based tables (cited, see `plan/en/04-metrics-and-formulas.md` §15).
+- **Your profile lives in the database, never in the code:** a "User profile" page (sex, birth date, weight, maximum heart rate, which it can read from Garmin), and a "Stress and sleep" page with stress hours, breathing, Garmin's sleep classes and fitness age.
 - **Rider profile radar** with seven qualities (VO₂max, threshold, sprint, endurance, climbing, flat pace, recovery) and a comparison with rider types.
 - **Ride detail:** synchronised charts, route on an OpenStreetMap map you can colour by speed, gradient, power, heart rate… (with an offline fallback), laps, zones, best efforts, torque-vs-cadence map, aerobic decoupling.
 - **Bike fleet and component wear:** thresholds *and* a route-aware wear index (brakes wear on descents, chains on pedalling work), alerts at 80 % and 100 %, bikes matched to rides automatically.

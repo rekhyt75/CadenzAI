@@ -28,7 +28,10 @@ One SQLite file (`data/<app>.db`, `PRAGMA` defaults are fine) plus the original 
 | `sleep` | `day` | stage seconds, `score`, respiration, `sleep_stress`, `awake_count`, `feedback` |
 | `hrv` | `day` | `last_night_avg, weekly_avg, high5min, status, balanced_low, balanced_upper` |
 | `vo2max` | `day` | `value` (precise), `rounded`, `scope` (`ciclismo` or `generico`) |
-| `athlete` | `id` (always 1) | `sex`, `birth_year`, `birth_date`, `source`: local only, never in the repository |
+| `athlete` | `id` (always 1) | `sex`, `birth_year`, `birth_date`, `weight_kg`, `hr_max`, `bike_gear_kg`, `hr_zone_floors` (JSON), `lthr`, `hr_source`, `source`: the user's profile, local only, never in the repository |
+| `wellness_extra` | `day` | `stress_rest_s, stress_low_s, stress_med_s, stress_high_s, stress_level, stress_qualifier, resp_avg, resp_max, resp_min, bb_charged, bb_drained, bb_latest` |
+| `sleep_extra` | `day` | `overall_q` (Garmin's class), `scores` (JSON with the class and optimal range of each item), `nap_s`, `insight` |
+| `fitness_age` | `day` | `chrono, fitness, achievable, vigorous_days, vigorous_min, rhr, bmi` |
 | `ref_power_age` | `duration_s, sex, age_band` | `low10, mean, top10, source, url` |
 | `bikes` | `id` | `name` (unique), `kind` (`mtb`, `gravel`, `strada`/road, `rulli`/indoor, `altro`), `status` (`attiva`/`in_vendita`/`venduta`), `bought_on, sold_on, price, list_price, sold_price, notes, color_slot` (1–8, **fixed per bike forever**) |
 | `components` | `id` | `bike, kind, label, model, source, installed_on, removed_on, price, vendor, threshold_km, threshold_h, threshold_elev, threshold_days, notes, is_upgrade, upgrade_value, original` |

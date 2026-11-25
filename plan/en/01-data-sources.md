@@ -30,12 +30,15 @@ The response body is a JWT (about 24 h lifetime; read `exp` from the payload). K
 | HRV | `/hrv-service/hrv/daily/{start}/{end}` | ≤ 180 days per call; has the baseline band (`balancedLow/Upper`) and status |
 | VO₂max | `/metrics-service/metrics/maxmet/daily/{start}/{end}` | ≤ 170 days per call (a longer range answers 400); a value only on the days it changes; use the `cycling` block, else the `generic` one, and label which it was |
 | Weight | `/weight-service/weight/range/{start}/{end}?includeAll=true` | grams; may be a manual profile setting, not a measurement |
+| Stress by duration | `/usersummary-service/stats/stress/daily/{start}/{end}` | seconds at rest, low, medium and high stress per day; ranges of 28 days are safe |
+| Fitness age | `/fitnessage-service/fitnessage/v2/{date}` | actual age, fitness age, achievable age and its components; one date per call, so sample weekly |
 | Zones | `/biometric-service/heartRateZones/v2` | per-sport zone floors, max HR, lactate threshold HR |
 | Profile | `/userprofile-service/userprofile/settings` | units, display name (do not store personal fields) |
 
 **Known limitations to tell the user:**
 
 - All **gear/equipment endpoints return 404** (they are not on the allow-list). A ride's assigned bike therefore **cannot** be read through the API; see `05` for how bikes are matched instead.
+- The allow-list is short. Besides the endpoints above it answers daily heart rate, hydration, weight goals, food logs and activity workouts. Training readiness, training status, endurance and hill scores, race predictions and gear are **not** exposed: probe a guessed path and you mostly get 404. Some of what is exposed is empty for many users (SpO₂, weight, body composition).
 - Some metrics (training readiness, race predictions) are not exposed. **VO₂max is exposed** (see the endpoint table): check each metric on the API before declaring it missing.
 - The API is rate-limited. Implement:
   - a minimum interval of ~1 s between calls;

@@ -30,12 +30,15 @@ Il corpo della risposta è un JWT (durata di circa 24 h; leggi `exp` dal payload
 | HRV | `/hrv-service/hrv/daily/{start}/{end}` | ≤ 180 giorni per chiamata; contiene la fascia di riferimento (`balancedLow/Upper`) e lo stato |
 | VO₂max | `/metrics-service/metrics/maxmet/daily/{start}/{end}` | ≤ 170 giorni per chiamata (un intervallo più lungo risponde 400); un valore solo nei giorni in cui cambia; usa il blocco `cycling`, altrimenti quello `generic`, e indica quale era |
 | Peso | `/weight-service/weight/range/{start}/{end}?includeAll=true` | grammi; può essere un'impostazione manuale del profilo, non una misura |
+| Stress per durata | `/usersummary-service/stats/stress/daily/{start}/{end}` | secondi a riposo, con stress basso, medio e alto per giorno; intervalli di 28 giorni vanno bene |
+| Fitness age | `/fitnessage-service/fitnessage/v2/{date}` | età reale, fitness age, età raggiungibile e componenti; una data per chiamata, quindi campiona una volta a settimana |
 | Zone | `/biometric-service/heartRateZones/v2` | soglie inferiori delle zone per sport, FC massima, FC alla soglia del lattato |
 | Profilo | `/userprofile-service/userprofile/settings` | unità, nome visualizzato (non salvare i campi personali) |
 
 **Limiti noti da comunicare all'utente:**
 
 - Tutti gli **endpoint di attrezzatura/gear restituiscono 404** (non sono nella lista consentita). La bici assegnata a un'uscita **non** può quindi essere letta tramite l'API; vedi `05` per come le bici vengono abbinate in alternativa.
+- La allow-list è corta. Oltre agli endpoint sopra risponde con FC giornaliera, idratazione, obiettivi di peso, registro alimentare e allenamenti delle attività. Training readiness, stato di allenamento, endurance e hill score, previsioni di gara e attrezzatura **non** sono esposti: se provi un percorso a caso ottieni quasi sempre 404. Parte di ciò che è esposto è vuoto per molti utenti (SpO₂, peso, composizione corporea).
 - Alcune metriche (training readiness, previsioni di gara) non sono esposte. **Il VO₂max è esposto** (vedi la tabella degli endpoint): controlla ogni metrica sull'API prima di dichiararla mancante.
 - L'API ha un limite di richieste. Implementa:
   - un intervallo minimo di ~1 s tra le chiamate;

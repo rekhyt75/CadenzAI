@@ -129,3 +129,13 @@ Four semicircular gauges (speedometer style) and a set of bars. Each one says wh
 | Resting HR, Body Battery, sleep score | no external scale: compared with the user's usual range, the mean ± 1 standard deviation of the previous 60 days (at least 14 days are needed), three zones. Say that it is not a clinical threshold |
 
 **Power by age and sex.** Table `ref_power_age`: W/kg at 5 s, 1 min, 5 min and 20 min, with the columns "10 % low", "mean" and "10 % high" for six age bands, 20–29 up to 70–79. They come from the GCN Italia video "Quanto sei in forma per la tua età?" (`https://www.youtube.com/watch?v=B3uTsYNu8V0`). Do not download the video: ask the user for screenshots of the tables and transcribe them. Record the video as the source, say that the original study is not stated and that the meaning of "10 %" is the video's wording, **do not copy the numbers into the repository**, and check the transcription (low < mean < high, values falling with age). On the identity card draw one bar per duration from the 10 % low to the 10 % high with the all-time best as a mark, and the position in words.
+
+## 16. Cross-checks against Garmin's own values
+
+Before keeping a custom algorithm, compare it with what Garmin already stores. Findings of the reference build, for one ride (check yours, do not trust these):
+
+- **Time in heart-rate zones:** the FIT file has `time_in_zone` messages (global message number 216, unknown to `fitparse`: read the numeric fields). The session-level record has `reference_mesg` 18; field 2 is the time per heart-rate zone in milliseconds and field 6 the zone boundaries. Our own count matched it within 1 %, so keep the custom calculation and use Garmin's as a test.
+- **Time in power zones:** Garmin's boundaries (field 9) are defined by the device and differ from Coggan's; the two cannot be compared. Keep the standard zones and say which ones.
+- **Climbs:** the `climb_pro` messages (number 317) come from a course loaded on the device, not from detecting climbs in the ride, so they are not a like-for-like check. Keep the own algorithm and do not treat the decoding of those fields as verified.
+- **Training Effect:** aerobic and anaerobic, scale 0–5, are in the FIT session message (`total_training_effect`, `total_anaerobic_training_effect`) and match the API; show them as a KPI tile of the ride detail.
+- **Normalized power, TSS and FTP** come from Garmin; the own NP and TSS exist only as a check (flag a difference above 2 %).

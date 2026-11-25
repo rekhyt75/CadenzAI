@@ -11,6 +11,7 @@ You are about to build **CadenzAI**, a local, single-user cycling-analytics dash
 5. **Honesty rules:** never invent a missing value (show N/D); label estimates; separate observation, hypothesis and recommendation; do not confuse correlation with causation.
 6. Answer in the user's language. Before destructive or outward-facing actions (deleting data, pushing to a remote, installing third-party tools that receive the key), ask.
 7. Record the user's decisions that the code cannot show (see `07-operations-and-quality.md`, "Project memory").
+8. **No personal data in the code.** Weight, maximum heart rate, sex, birth date and bike mass go in the profile table, edited from a "User profile" page; read from Garmin what the API gives (heart-rate zones). A missing value is N/D, never a guess.
 
 ## Italiano
 
@@ -23,3 +24,4 @@ Stai per costruire **CadenzAI**, una dashboard ciclistica locale a utente singol
 5. **Regole di onestà:** non inventare mai un valore mancante (mostra N/D); etichetta le stime; separa osservazione, ipotesi e raccomandazione; non confondere correlazione e causa.
 6. Rispondi nella lingua dell'utente. Prima di azioni distruttive o verso l'esterno (cancellare dati, fare push su un remoto, installare strumenti di terzi che ricevono la chiave) chiedi.
 7. Registra le decisioni dell'utente che il codice non mostra (vedi `07-operations-and-quality.md`, «Project memory»).
+8. **Nessun dato personale nel codice.** Peso, frequenza cardiaca massima, sesso, data di nascita e massa della bici vanno nella tabella del profilo, modificata da una pagina «Profilo utente»; leggi da Garmin ciò che l'API dà (zone cardio). Un valore mancante è N/D, mai una stima inventata.
