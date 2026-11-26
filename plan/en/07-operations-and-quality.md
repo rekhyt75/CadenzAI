@@ -13,7 +13,7 @@ FastAPI app served by Uvicorn on `127.0.0.1:<port>` (default 8765), the same pro
 
 ## 2. The `cadenzAI.sh` script
 
-Commands: `start | stop | restart | status | logs [N] | run | ai start|stop|status`. Behaviour to reproduce:
+Commands: `start | stop | restart | status | logs [N] | run | test | ai start|stop|status`. Behaviour to reproduce:
 
 - `start`: if already running say so and exit 0; otherwise refuse politely if **another program** uses the port (never touch it); launch Uvicorn **fully detached** and wait (≤ 20 s) for `GET /api/meta` = 200; write the PID file `data/server[-<port>].pid`; print the URL.
 - `stop`: find the PID (PID file, else the listener of the port) and verify with `/proc/<pid>/cmdline` that it is **uvicorn `app:app` started on this very port** before sending `SIGTERM`; escalate to `SIGKILL` after 10 s; warn if a Garmin update is running ("it resumes on the next start"). Exit 0 if not running.
@@ -86,5 +86,8 @@ Keep a short file (for Claude Code: its memory directory, or `NOTES.md`) with th
 | Database | a read path must never write (it fails with "database is locked" while the sync writes); commit long imports in short steps and never hold a write open across slow network calls |
 | Personal data | no personal value in the code: weight, maximum heart rate, sex, birth date and bike mass live in the profile table and are edited from a page; a missing value gives N/D |
 | Layout | put each row of tiles in its own container and cap the column width: a single auto-fitting grid moves boxes between rows as the window grows, and stretching boxes to fill the width was rejected; a card that holds a gauge spans two columns |
+| Local security | the server is local but the browser is not: validate the `Host` header (DNS rebinding) and the `Origin` of every write (CSRF: a POST without a body needs no CORS permission); add a content-security policy and `X-Frame-Options`; keep the database and the data folder private (`600` and `700`); refuse a non-loopback listening address unless forced |
+| Reliability | SQLite in WAL mode with a 30-second wait and the schema applied once per process; a smoke test that calls every GET endpoint and expects JSON, the 400 and 404 cases and the refusals above; an error boundary around each page so that one broken page does not blank the app |
+| Refactoring | before touching a complex function, save the JSON of the key endpoints for several real rides (sorted keys) and check that two snapshots in a row are identical; after each refactor the snapshot must be byte-identical. Measure complexity first (a tool, not a guess: a truncated list once hid the real second-worst function) and keep the dead branches you find as findings, not silent fixes: one fact in the AI prompt had never appeared because it read a key that does not exist |
 | Collaboration | the user may be using the app while you test: use a separate browser window, never confirm a destructive dialog you did not open, and restore any state you changed during tests (e.g. delete test components) |
 | Honesty | say when a figure is a proxy, when a check could not be run, and when your first answer was wrong |

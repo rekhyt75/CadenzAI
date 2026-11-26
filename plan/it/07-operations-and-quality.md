@@ -13,7 +13,7 @@ App FastAPI servita da Uvicorn su `127.0.0.1:<port>` (predefinita 8765), con lo 
 
 ## 2. Lo script `cadenzAI.sh`
 
-Comandi: `start | stop | restart | status | logs [N] | run | ai start|stop|status`. Comportamento da riprodurre:
+Comandi: `start | stop | restart | status | logs [N] | run | test | ai start|stop|status`. Comportamento da riprodurre:
 
 - `start`: se è già in esecuzione dillo ed esci con 0; altrimenti rifiuta con garbo se **un altro programma** usa la porta (non toccarlo mai); avvia Uvicorn **completamente staccato** e attendi (≤ 20 s) che `GET /api/meta` risponda 200; scrivi il file PID `data/server[-<port>].pid`; stampa l'URL.
 - `stop`: trova il PID (file PID, altrimenti chi è in ascolto sulla porta) e verifica con `/proc/<pid>/cmdline` che sia **uvicorn `app:app` avviato proprio su questa porta** prima di inviare `SIGTERM`; passa a `SIGKILL` dopo 10 s; avvisa se è in corso un aggiornamento Garmin ("riprende al prossimo avvio"). Esci con 0 se non è in esecuzione.
@@ -86,5 +86,8 @@ Tieni un file breve (per Claude Code: la sua directory di memoria, oppure `NOTES
 | Database | un percorso di lettura non deve mai scrivere (fallisce con «database is locked» mentre la sincronizzazione scrive); conferma le importazioni lunghe a piccoli passi e non tenere mai una scrittura aperta durante chiamate di rete lente |
 | Dati personali | nessun valore personale nel codice: peso, frequenza cardiaca massima, sesso, data di nascita e massa della bici stanno nella tabella del profilo e si modificano da una pagina; un valore mancante dà N/D |
 | Layout | metti ogni riga di riquadri in un suo contenitore e limita la larghezza delle colonne: una sola griglia che si adatta sposta i riquadri tra le righe quando la finestra cresce, e allargarli per riempire la larghezza è stato rifiutato; una scheda con un gauge occupa due colonne |
+| Sicurezza locale | il server è locale ma il browser no: convalida l'intestazione `Host` (DNS rebinding) e l'`Origin` di ogni scrittura (CSRF: un POST senza corpo non richiede il permesso CORS); aggiungi una content-security policy e `X-Frame-Options`; tieni riservati database e cartella dei dati (`600` e `700`); rifiuta un indirizzo di ascolto non locale salvo forzatura |
+| Affidabilità | SQLite in modalità WAL con attesa di 30 secondi e schema applicato una volta per processo; una prova di fumo che chiama ogni endpoint GET e si aspetta JSON, i casi 400 e 404 e i rifiuti qui sopra; un error boundary attorno a ogni pagina, così una pagina rotta non svuota l'app |
+| Refactoring | prima di toccare una funzione complessa, salva il JSON degli endpoint principali per varie uscite reali (chiavi ordinate) e controlla che due snapshot di fila siano identici; dopo ogni refactor lo snapshot deve essere identico byte per byte. Misura prima la complessità (con uno strumento, non a occhio: una lista troncata una volta ha nascosto la vera seconda funzione peggiore) e tratta i rami morti che trovi come segnalazioni, non come correzioni silenziose: un dato del prompt dell'IA non era mai comparso perché leggeva una chiave inesistente |
 | Collaborazione | l'utente potrebbe usare l'app mentre testi: usa una finestra del browser separata, non confermare mai una finestra di dialogo distruttiva che non hai aperto e ripristina ogni stato che hai cambiato durante i test (ad es. elimina i componenti di prova) |
 | Onestà | di' quando un valore è un'approssimazione, quando un controllo non è stato eseguibile e quando la tua prima risposta era sbagliata |
