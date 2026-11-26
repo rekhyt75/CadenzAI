@@ -30,7 +30,7 @@ assumptions:            # shown in the UI; edit to your setup
 bikes: []               # optional: [{name, kind, status, bought_on}]
 ai_summary:             # OPTIONAL local-AI ride summary (see 10); off unless the user says yes
   enabled: false
-  model: qwen2.5:7b
+  model: qwen3:4b-instruct
   url: http://127.0.0.1:11434   # must be a loopback address
 ```
 
@@ -91,4 +91,4 @@ Only the **first three** categorical slots are guaranteed distinguishable in eve
 
 ## 6. Dependencies (pin exact versions in your lock files)
 
-Backend: `fastapi, uvicorn, httpx, fitparse, numpy, scipy, pydantic`. Frontend: `react, react-dom, recharts (2.x), vite, @vitejs/plugin-react`. Optional for verification: a browser-automation tool (Chrome DevTools MCP or Playwright). Frontend map: `leaflet` (1.9). Optional local AI (`10`): the Ollama program and one model (reference: `qwen2.5:7b`), not Python packages.
+Backend: `fastapi, uvicorn, httpx, fitparse, numpy, scipy, pydantic`. Frontend: `react, react-dom, recharts (2.x), vite, @vitejs/plugin-react`. Optional for verification: a browser-automation tool (Chrome DevTools MCP or Playwright). Frontend map: `leaflet` (1.9). Optional local AI (`10`): the Ollama program and one model (reference: `qwen3:4b-instruct`), not Python packages.

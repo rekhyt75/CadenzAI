@@ -16,6 +16,19 @@
   <sub>Mockup illustrativo, dati sintetici. In questo repository non ci sono uscite reali.</sub>
 </p>
 
+> ### ⚡ Il vero valore: parti dalla risposta, non dalla domanda
+> Questo plan **non è una prima bozza**. È ciò che resta dopo una lunga costruzione reale su dati Garmin reali: ogni strada sbagliata, correzione, prova e analisi fatta lungo il cammino è già dentro la specifica, quindi Claude Code non deve riscoprire nulla. **È questo che ti fa risparmiare tempo e token.**
+>
+> **Cosa non devi rifare**
+> - **Esplorare l'API di Garmin:** quali endpoint rispondono e quali danno 404 (l'attrezzatura), l'`endDate` obbligatorio, i limiti di richieste, e le metriche che sembrano mancare ma non mancano (VO₂max).
+> - **I vicoli ciechi dei dati:** orari in UTC, un bit di segnalazione nascosto nel bilanciamento destra/sinistra, un filtro dei picchi da tarare due volte, campi dell'esportazione che ingannano, come abbinare i file FIT alle uscite.
+> - **Le decisioni che hanno richiesto molti giri:** soglie di usura e parole oneste, un modello del valore della bici con una fonte citata, gauge rispetto al tuo intervallo, di che cosa ci si può fidare in una piccola IA locale (cinque modelli confrontati), un'interfaccia che non salta.
+> - **I controlli:** cosa verificare dopo ogni fase, e i modi in cui è già andata male. Sedici gruppi di lezioni sono scritti (`plan/it/07-operations-and-quality.md`).
+>
+> **Cosa paghi comunque:** leggere il plan una volta (circa 110.000 caratteri, circa 27.000 token), il codice che Claude Code deve scrivere e le tue scelte. Il plan toglie la *scoperta*, non la *costruzione*.
+>
+> **Una stima approssimativa, non una misura:** ci aspettiamo di risparmiare dell'ordine della **metà dei token e degli andirivieni** rispetto a partire da zero. Per misurarlo, esegui il plan in una cartella vuota e confronta il consumo con un tuo tentativo da zero. E ogni correzione che farai in seguito può tornare nel plan, così il prossimo parte ancora più avanti.
+
 ## Perché un plan e non un'app?
 
 > ### 🔒 Privacy first
@@ -43,7 +56,7 @@ Ognuno ha bici, sensori e curiosità diversi. Un plan lo puoi **leggere, modific
 
 ## Come si incastra tutto
 
-<p align="center"><img src="docs/images/architecture.svg" alt="Garmin, SQLite, analisi, FastAPI, dashboard: guidati da Claude Code e da questo plan" width="100%"/></p>
+<p align="center"><img src="docs/images/architecture.svg" alt="Garmin, SQLite, analisi, FastAPI, dashboard, con il riassunto IA locale facoltativo: guidati da Claude Code e da questo plan" width="100%"/></p>
 
 Stack della versione di riferimento: Python 3.12 · FastAPI · SQLite · `fitparse` · NumPy/SciPy · React · Vite · Recharts. Puoi chiedere a Claude Code un altro stack: il plan descrive *cosa* costruire, non solo *come*.
 
@@ -243,7 +256,7 @@ Dati e strumenti esterni su cui si appoggia il plan. Il plan li cita; questo rep
 | Percentili del profilo di potenza per il radar | [Adapt Cycling, power profile](https://www.adaptcycling.com/tools/power-profile) (la pagina non nomina il suo insieme di dati) |
 | Valore dell'usato per età | [buycycle, «Quanto posso vendere la mia bici?»](https://buycycle.com/blog/it/post/quanto-posso-vendere-la-mia-bici/) |
 | Tessere della mappa del percorso | [OpenStreetMap](https://www.openstreetmap.org/copyright) (© contributori di OpenStreetMap), [CyclOSM](https://www.cyclosm.org), [OpenTopoMap](https://opentopomap.org), [Humanitarian OpenStreetMap Team](https://www.hotosm.org); libreria per le mappe [Leaflet](https://leafletjs.com) |
-| Riassunto IA locale facoltativo | [Ollama](https://ollama.com) e il [modello Qwen 2.5](https://ollama.com/library/qwen2.5) |
+| Riassunto IA locale facoltativo | [Ollama](https://ollama.com) e il [modello Qwen 3](https://ollama.com/library/qwen3) |
 
 ## Licenza
 

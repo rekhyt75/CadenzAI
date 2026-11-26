@@ -30,7 +30,7 @@ assumptions:            # shown in the UI; edit to your setup
 bikes: []               # optional: [{name, kind, status, bought_on}]
 ai_summary:             # OPTIONAL local-AI ride summary (see 10); off unless the user says yes
   enabled: false
-  model: qwen2.5:7b
+  model: qwen3:4b-instruct
   url: http://127.0.0.1:11434   # must be a loopback address
 ```
 
@@ -91,4 +91,4 @@ Solo i **primi tre** slot categorici sono garantiti distinguibili in ogni tipo d
 
 ## 6. Dipendenze (fissa le versioni esatte nei tuoi lock file)
 
-Backend: `fastapi, uvicorn, httpx, fitparse, numpy, scipy, pydantic`. Frontend: `react, react-dom, recharts (2.x), vite, @vitejs/plugin-react`. Opzionale per la verifica: uno strumento di automazione del browser (Chrome DevTools MCP o Playwright). Mappa nel frontend: `leaflet` (1.9). IA locale facoltativa (`10`): il programma Ollama e un modello (riferimento: `qwen2.5:7b`), non pacchetti Python.
+Backend: `fastapi, uvicorn, httpx, fitparse, numpy, scipy, pydantic`. Frontend: `react, react-dom, recharts (2.x), vite, @vitejs/plugin-react`. Opzionale per la verifica: uno strumento di automazione del browser (Chrome DevTools MCP o Playwright). Mappa nel frontend: `leaflet` (1.9). IA locale facoltativa (`10`): il programma Ollama e un modello (riferimento: `qwen3:4b-instruct`), non pacchetti Python.

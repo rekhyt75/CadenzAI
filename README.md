@@ -16,6 +16,19 @@
   <sub>Illustrative mockup, synthetic data. No real rides are shown in this repository.</sub>
 </p>
 
+> ### ⚡ The real value: you start from the answer, not from the question
+> This plan is **not a first draft**. It is what is left after a long, real build on real Garmin data: every wrong turn, correction, test and analysis made along the way is already folded into the specification, so Claude Code does not have to rediscover any of it. **That is what saves you time and tokens.**
+>
+> **What you skip**
+> - **Exploring the Garmin API:** which endpoints answer and which return 404 (the gear), the mandatory `endDate`, the rate limits, and metrics that look missing but are not (VO₂max).
+> - **The dead ends of the data:** UTC times, a flag bit hidden in the left/right balance, a spike filter that had to be tuned twice, export fields that mislead, how to match FIT files to rides.
+> - **The decisions that took many rounds:** wear thresholds and honest wording, a bike-value model with a cited source, gauges against your own range, what a small local AI can and cannot be trusted with (five models were compared), a layout that does not jump around.
+> - **The checks:** what to verify after every phase, and the ways it already failed. Sixteen groups of lessons are written down (`plan/en/07-operations-and-quality.md`).
+>
+> **What you still pay for:** reading the plan once (about 110,000 characters, roughly 27,000 tokens), the code that Claude Code has to write, and your own choices. The plan removes the *discovery*, not the *building*.
+>
+> **A rough estimate, not a measurement:** we expect this to save on the order of **half of the tokens and of the back-and-forth** compared with starting from a blank page. To measure it, run the plan in an empty folder and compare the usage with your own from-scratch attempt. And every correction you make later can go back into the plan, so the next person starts even further ahead.
+
 ## Why a plan and not an app?
 
 > ### 🔒 Privacy first
@@ -43,7 +56,7 @@ Everyone rides different bikes, owns different sensors and wants different stati
 
 ## How it fits together
 
-<p align="center"><img src="docs/images/architecture.svg" alt="Garmin to SQLite to analytics to FastAPI to dashboard, driven by Claude Code and this plan" width="100%"/></p>
+<p align="center"><img src="docs/images/architecture.svg" alt="Garmin to SQLite to analytics to FastAPI to dashboard, with an optional local AI summary, driven by Claude Code and this plan" width="100%"/></p>
 
 Stack of the reference build: Python 3.12 · FastAPI · SQLite · `fitparse` · NumPy/SciPy · React · Vite · Recharts. You may ask Claude Code for another stack: the plan describes *what* to build, not only *how*.
 
@@ -243,7 +256,7 @@ External data and tools the plan relies on. The plan cites them; this repository
 | Power-profile percentiles for the rider radar | [Adapt Cycling, power profile](https://www.adaptcycling.com/tools/power-profile) (the page does not name its dataset) |
 | Used-bike value by age | [buycycle, "Quanto posso vendere la mia bici?"](https://buycycle.com/blog/it/post/quanto-posso-vendere-la-mia-bici/) |
 | Route map tiles | [OpenStreetMap](https://www.openstreetmap.org/copyright) (© OpenStreetMap contributors), [CyclOSM](https://www.cyclosm.org), [OpenTopoMap](https://opentopomap.org), [Humanitarian OpenStreetMap Team](https://www.hotosm.org); map library [Leaflet](https://leafletjs.com) |
-| Optional local AI summary | [Ollama](https://ollama.com) and the [Qwen 2.5 model](https://ollama.com/library/qwen2.5) |
+| Optional local AI summary | [Ollama](https://ollama.com) and the [Qwen 3 model](https://ollama.com/library/qwen3) |
 
 ## License
 
